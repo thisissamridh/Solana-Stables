@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export default function StablecoinChart() {
   const [data, setData] = useState([]);
@@ -96,7 +96,7 @@ export default function StablecoinChart() {
       <strong className="text-gray-700 font-medium">Stablecoin Market Cap</strong>
       <div className="mt-3 w-full flex-1 text-xs">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart
+          <AreaChart
             width={500}
             height={300}
             data={data}
@@ -109,15 +109,16 @@ export default function StablecoinChart() {
             <Legend />
             
             {stablecoins.map(stablecoin => (
-              <Line
+              <Area
                 key={stablecoin.id}
                 type="monotone"
                 dataKey={stablecoin.name}
                 stroke={getColor(stablecoin.id)}
+                fill={getColor(stablecoin.id)}
                 activeDot={{ r: 8 }}
               />
             ))}
-          </LineChart>
+          </AreaChart>
         </ResponsiveContainer>
       </div>
     </div>
