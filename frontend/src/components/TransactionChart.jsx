@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { ComposedChart, Area, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export default function StablecoinChart() {
   const [data, setData] = useState([]);
@@ -92,16 +92,22 @@ export default function StablecoinChart() {
   };
 
   return (
-    <div className="h-[22rem] bg-white p-4 rounded-sm border border-gray-200 flex flex-col flex-1">
-      <strong className="text-gray-700 font-medium">Stablecoin Market Cap</strong>
+    <div className="h-[22rem] bg-black-gradient p-4 rounded-md  flex flex-col flex-1 shadow-xl">
+      <strong className="text-white-700 font-medium">Stablecoin Market Cap</strong>
       <div className="mt-3 w-full flex-1 text-xs">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
+          <ComposedChart
             width={500}
             height={300}
             data={data}
             margin={{ top: 5, right: 30, left: -10, bottom: 5 }}
           >
+            <defs>
+              <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#82ca9d" stopOpacity={0.8} />
+              </linearGradient>
+            </defs>
             <XAxis dataKey="date" />
             <YAxis />
             <CartesianGrid strokeDasharray="3 3" />
@@ -114,11 +120,11 @@ export default function StablecoinChart() {
                 type="monotone"
                 dataKey={stablecoin.name}
                 stroke={getColor(stablecoin.id)}
-                fill={getColor(stablecoin.id)}
+                fill="url(#gradient)"
                 activeDot={{ r: 8 }}
               />
             ))}
-          </AreaChart>
+          </ComposedChart>
         </ResponsiveContainer>
       </div>
     </div>

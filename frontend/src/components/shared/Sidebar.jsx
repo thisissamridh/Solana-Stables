@@ -13,7 +13,7 @@ export default function Sidebar() {
 
 	return (
 		<div
-			className={`bg-neutral-900 w-60 p-3 flex flex-col transform transition-transform duration-300 ${
+			className={`.bg-black-gradient sidebar w-60 p-3 flex flex-col transform transition-transform duration-300 ${
 				isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
 			}`}
 		>
