@@ -1,5 +1,5 @@
 import React from 'react'
 
-export default function Transaction() {
+export default function StableCoin() {
 	return <div>USDT Analysis</div>
 }
