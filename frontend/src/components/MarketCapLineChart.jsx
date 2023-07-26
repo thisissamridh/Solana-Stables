@@ -82,7 +82,7 @@ export default function StableCoinLineChart({ coinName }) {
                                 </linearGradient>
                             </defs>
                             <XAxis dataKey="date" />
-                            <YAxis />
+                            <YAxis tickFormatter={formatNumber} />
                             <CartesianGrid strokeDasharray="3 3" />
                             <Tooltip formatter={(value) => formatNumber(value)} />
                             <Legend />
