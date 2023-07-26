@@ -11,7 +11,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Dashboard />} />
-                    <Route path="/stableCoin" element={<StableCoin />} />
+                    <Route path="/stableCoin/:stablecoinName" element={<StableCoin />} />
                 </Route>
             </Routes>
         </Router>
