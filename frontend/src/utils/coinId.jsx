@@ -10,6 +10,13 @@ const CoinId = [
   { id: 24, name: 'CUSD' },
   { id: 3, name: 'USTC' },
   { id: 4, name: 'BUSD' },
+  { id: 6, name: 'FRAX' },
+  { id: 35, name: 'MAI' },
+  { id: 55, name: 'AGEUR' },
+  { id: 27, name: 'USDK' },
+  { id: 52, name: 'CEUR' },
+  { id: 24, name: 'CUSD' },
+  { id: 17, name: 'HUSD' },
 ];
 
 export default CoinId;

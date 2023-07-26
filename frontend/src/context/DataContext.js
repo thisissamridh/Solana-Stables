@@ -1,12 +1,14 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { fetchStablecoinData } from '../api/api';
+import { fetchStablecoinData } from '../api/marketCapApi';
 import CoinId from '../utils/coinId';
+
 const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
-    const stablecoinsID = CoinId
+    const stablecoinsID = CoinId;
 
-    const [individualCoinMcpData, setindividualCoinMcpData] = useState([]);
+    const [individualCoinMcpData, setIndividualCoinMcpData] = useState([]);
+    const [totalMarketCap, setTotalMarketCap] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,7 +35,14 @@ const DataProvider = ({ children }) => {
                     return labeledEntry;
                 });
 
-                setindividualCoinMcpData(labeledData);
+                setIndividualCoinMcpData(labeledData);
+
+                // Calculate the total market cap by summing up all the coin's market caps
+                const sumMarketCap = labeledData.reduce((total, entry) => {
+                    return total + Object.values(entry).reduce((sum, val) => (typeof val === 'number' ? sum + val : sum), 0);
+                }, 0);
+
+                setTotalMarketCap(sumMarketCap);
             } catch (error) {
                 console.error('Error fetching individualCoinMcpData:', error);
             }
@@ -43,7 +52,7 @@ const DataProvider = ({ children }) => {
     }, []);
 
     return (
-        <DataContext.Provider value={{ individualCoinMcpData, stablecoinsID }}>
+        <DataContext.Provider value={{ individualCoinMcpData, stablecoinsID, totalMarketCap }}>
             {children}
         </DataContext.Provider>
     );

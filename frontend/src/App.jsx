@@ -4,14 +4,15 @@ import StableCoin from './pages/StableCoin'
 import Dashboard from './pages/Dashboard'
 import style from './index.css'
 
+
 function App() {
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Dashboard />} />
+                    <Route path="/stableCoin" element={<StableCoin />} />
                 </Route>
-                <Route path="/stableCoin" element={<StableCoin />} />
             </Routes>
         </Router>
     )
