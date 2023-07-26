@@ -4,6 +4,7 @@ import { Menu } from '@headlessui/react';
 import { HiOutlineSearch, HiOutlineChatAlt } from 'react-icons/hi';
 import { useNavigate } from 'react-router-dom';
 import { FcBullish } from 'react-icons/fc';
+import  Coins from '../../pages/Coins'
 
 export default function Header() {
 	const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function Header() {
 					Home
 
 				</Link>
-				<Link to="/stableCoin" className="text-neutral-300 hover:text-white focus:outline-none">
+				<Link to="/Coins" className="text-neutral-300 hover:text-white focus:outline-none">
 					Coin Analytics
 				</Link>
 			</div>

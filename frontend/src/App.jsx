@@ -3,6 +3,7 @@ import Layout from './components/shared/Layout'
 import StableCoin from './pages/StableCoin'
 import Dashboard from './pages/Dashboard'
 import style from './index.css'
+import Coins from './pages/Coins'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Dashboard />} />
                     <Route path="/stableCoin/:stablecoinName" element={<StableCoin />} />
+                    <Route path="/Coins" element={<Coins />} />
                 </Route>
             </Routes>
         </Router>
