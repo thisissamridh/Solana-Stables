@@ -12,7 +12,7 @@ export default function Dashboard() {
 			<div className="flex flex-row gap-4 w-full">
 				<DataProvider>
 					<StableCoinLineChart />
-					<StableCoinPieChart />
+					<StableCoinPieChart stablecoinName="USDC" />
 				</DataProvider>
 			</div>
 			<div className="flex flex-row gap-4 w-full">

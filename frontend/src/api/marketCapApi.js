@@ -7,7 +7,7 @@ const fetchStablecoinData = async (stablecoinId) => {
 
         const response = await axios.get(`https://stablecoins.llama.fi/stablecoincharts/solana?stablecoin=${stablecoinId}`);
         //for debugging
-        // console.log(`Data fetched successfully for stablecoin with ID: ${stablecoinId}`);
+        console.log(`Data fetched successfully for stablecoin with ID: ${stablecoinId}`);
 
         const formattedData = response.data.map(entry => ({
             date: new Date(entry.date * 1000).toISOString().split('T')[0],
