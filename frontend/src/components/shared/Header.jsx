@@ -19,7 +19,7 @@ export default function Header() {
 				</div>
 			</div>
 
-			<div className="flex items-center gap-4">
+			<div className="flex items-center gap-4 ">
 				<Link to="/" className="flex items-center text-neutral-300 hover:text-white focus:outline-none">
 					Home
 
