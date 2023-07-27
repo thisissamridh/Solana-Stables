@@ -26,6 +26,7 @@ export default function Dashboard() {
 			<div className="flex flex-row gap-4 w-full">
 				<DataProvider>
 					{/* Pass the stablecoinName to StableCoinLineChart component */}
+					
 					<StableCoinLineChart coinName={stablecoinName} />
 					<StableCoinPieChart />
 				</DataProvider>
