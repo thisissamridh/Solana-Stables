@@ -10,10 +10,10 @@ export default function Dashboard() {
 		<div className="flex flex-col gap-4">
 			<DashboardStatsGrid />
 			<div className="flex flex-row gap-4 w-full">
-				<DataProvider>
-					<StableCoinLineChart />
-					<StableCoinPieChart stablecoinName="USDC" />
-				</DataProvider>
+
+				<StableCoinLineChart />
+				<StableCoinPieChart stablecoinName="USDC" />
+
 			</div>
 			<div className="flex flex-row gap-4 w-full">
 				<RecentOrders />

@@ -3,7 +3,7 @@
 const fetchHolderData = async (tokenAddress) => {
     try {
         const response = await fetch(
-            `https://api.solscan.io/token/holder/statistic/total?tokenAddress=${tokenAddress}&cluster=${cluster}`,
+            `https://api.solscan.io/token/holder/statistic/total?tokenAddress=${tokenAddress}`,
             {
                 method: 'GET',
                 headers: {
@@ -16,7 +16,7 @@ const fetchHolderData = async (tokenAddress) => {
 
 
         const data = await response.json();
-        console.log('Data:', data);
+        // console.log('Data:', data);
 
 
         const TotalHolders = data.data.data.totalHolders;

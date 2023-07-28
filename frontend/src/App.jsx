@@ -1,14 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Layout from './components/shared/Layout'
-import StableCoin from './pages/StableCoin'
-import Dashboard from './pages/Dashboard'
-import style from './index.css'
+// In App.jsx
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/shared/Layout';
+import LoadingIndicator from './components/Helper/LoadingIndicator';
 
-import Coins from './pages/Coins'
-
-
-import Dev from './pages/Dev'
-
+const StableCoin = React.lazy(() => import('./pages/StableCoin'));
+const Dashboard = React.lazy(() => import('./pages/Dashboard'));
+const Coins = React.lazy(() => import('./pages/Coins'));
+const Dev = React.lazy(() => import('./pages/Dev'));
 
 function App() {
     return (
@@ -17,15 +16,20 @@ function App() {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Dashboard />} />
                     <Route path="/stableCoin/:stablecoinName" element={<StableCoin />} />
-
                     <Route path="/Coins" element={<Coins />} />
-
                     <Route path="/dev" element={<Dev />} />
-
                 </Route>
             </Routes>
         </Router>
-    )
+    );
 }
 
-export default App
+function AppWithLazyLoading() {
+    return (
+        <Suspense fallback={<LoadingIndicator />}>
+            <App />
+        </Suspense>
+    );
+}
+
+export default AppWithLazyLoading;
