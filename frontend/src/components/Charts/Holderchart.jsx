@@ -35,9 +35,9 @@
 
 import React, { useContext, useState, useEffect } from 'react';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Brush } from 'recharts';
-import { DataContext } from '../context/DataContext';
-import ChartLoader from '../components/Helper/ChartLoader';
-import Dropdown from '../components/shared/Dropdown';
+import { DataContext } from '../../context/DataContext';
+import ChartLoader from '../Helper/ChartLoader';
+import Dropdown from '../Helper/Dropdown';
 const HolderChart = ({ coinName }) => {
     const { holderData } = useContext(DataContext);
 

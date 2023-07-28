@@ -93,7 +93,7 @@
 
 
 import React from 'react'
-import HolderChart from '../components/Holderchart'
+import HolderChart from '../components/Charts/Holderchart'
 const Dev = () => {
     return (
         <div>

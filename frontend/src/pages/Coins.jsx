@@ -10,40 +10,40 @@ import MarketOverview from '../components/MarketOverview'
 import ProfileSummary from '../components/ProfileSummary'
 import Name from '../components/Name'
 import Marketcap from '../components/Marketcap'
-import Holderchart from '../components/Holderchart'
+import Holderchart from '../components/Charts/Holderchart'
 import ActiveHolder from '../components/ActiveHolder'
 import Walletfunds from '../components/Walletfunds'
 import LiquidMarket from '../components/LiquidMarket'
 export default function Coins() {
 	return (
 		<div className="flex flex-col gap-4">
-            <Name/>
+			<Name />
 			<div className="flex gap-4 w-full  justify-center ">
-            <DataProvider >
-                <MarketOverview className="flex-1" />
-                <ProfileSummary className="flex-1" />
-                </DataProvider>
-</div>
-            
+				<DataProvider >
+					<MarketOverview className="flex-1" />
+					<ProfileSummary className="flex-1" />
+				</DataProvider>
+			</div>
+
 			<div className="flex flex-row gap-4 w-full">
-                
-				<Marketcap/>
-                <PopularProducts />
+
+				<Marketcap />
+				<PopularProducts />
 			</div>
 			<div>
 				<RecentOrders />
 			</div>
 			<div className='flex gap-3 w-full items-center justify-center'>
-				<Holderchart/>
-				<ActiveHolder/>
+				<Holderchart />
+				<ActiveHolder />
 			</div>
 			<div>
-			<Walletfunds/>
+				<Walletfunds />
 			</div>
 			<div>
-			<LiquidMarket/>
+				<LiquidMarket />
 			</div>
-			
+
 		</div>
 	)
 }
