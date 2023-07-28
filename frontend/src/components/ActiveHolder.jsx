@@ -5,10 +5,14 @@ export default function ActiveHolder() {
     // Sample data for the chart
     const chartData = [
         { date: '2022-01-01', value: 100 },
-        { date: '2022-02-01', value: 200 },
-        { date: '2022-03-01', value: 300 },
+        { date: '2022-02-01', value: 20 },
+        { date: '2022-03-01', value: 700 },
         { date: '2022-04-01', value: 400 },
+        { date: '2022-05-01', value: 800 },
         { date: '2022-05-01', value: 500 },
+        { date: '2022-05-01', value: 900 },
+        { date: '2022-05-01', value: 100 },
+        { date: '2022-05-01', value: 700 },
     ];
 
     return (

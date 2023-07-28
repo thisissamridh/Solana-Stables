@@ -49,7 +49,7 @@ export default function StableCoinPieChart() {
 
 	return (
 		<div className="w-[20rem] h-[22rem] bg-black-gradient p-4 rounded-sm flex flex-col shadow">
-			<strong className="text-white-700 font-medium">Stablecoin Market Cap Distribution</strong>
+			<strong className="text-white-700 font-bold  text-gradient">Stablecoin Market Cap Distribution</strong>
 			<div className="mt-3 w-full flex-1 text-xs">
 				<ResponsiveContainer width="100%" height="100%">
 					{pieChartData.length > 0 ? (

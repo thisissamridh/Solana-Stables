@@ -90,7 +90,7 @@ const recentOrderData = [
 export default function RecentOrders() {
 	return (
 		<div className="bg-black-gradient px-4 pt-3 pb-4 rounded-md  flex-1 shadow-xl">
-			<strong className="text-white-700 font-medium">Top 10 stablecoin$</strong>
+			<strong className="text-white-700 font-bold text-gradient">Top 10 Stablecoin $</strong>
 			<div className="  rounded-sm mt-3">
 				<table className="w-full text-white-700">
 					<thead className='bg-black-gradient'>

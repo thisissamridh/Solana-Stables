@@ -18,11 +18,11 @@ const Name = () => {
 
     return (
         <header className="bg-discount-gradient feature-card:hover rounded-lg shadow-lg p-4 flex justify-between items-center">
-            <h1 className="text-white text-2xl font-bold">
+            <h1 className="text-white text-2xl font-bold text-gradient">
                 {selectedStablecoin} Stablecoin Analysis
             </h1>
             <div className="relative">
-                <button className="bg-black-gradient text-white p-4 rounded-md" onClick={() => setShowDropdown(!showDropdown)}>
+                <button className="bg-black-gradient text-white p-4 rounded-md font-semibold " onClick={() => setShowDropdown(!showDropdown)}>
                     Select Stablecoin
                 </button>
                 {showDropdown && (

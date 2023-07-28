@@ -3,7 +3,7 @@ import { ComposedChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 import formatNumber from '../utils/FormatNumber';
 import { getColor } from '../utils/utils';
 
-export default function Marketca({ coinName }) {
+export default function Marketcap({ coinName }) {
     // Sample data for the chart
     const chartData = [
         { date: '2022-01-01', [coinName]: 100 },
@@ -15,7 +15,7 @@ export default function Marketca({ coinName }) {
 
     return (
         <div className="w-full h-[22rem] bg-black-gradient p-4 rounded-md flex flex-col flex-1 shadow-xl">
-            <strong className="text-white-700 font-bold text-lg ">Market Cap Chart</strong>
+            <strong className="text-white-700 font-bold text-lg text-gradient">Market Cap Chart</strong>
             <div className="mt-3 w-full flex-1 text-xs">
                 <ResponsiveContainer width="100%" height="100%">
                     <ComposedChart data={chartData} margin={{ top: 5, right: 30, left: -10, bottom: 5 }}>

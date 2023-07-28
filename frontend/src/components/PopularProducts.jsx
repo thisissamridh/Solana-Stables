@@ -50,7 +50,7 @@ const popularProducts = [
 function PopularProducts() {
 	return (
 		<div className="w-[20rem] bg-black-gradient p-4 rounded-md shadow-xl">
-			<strong className="text-white-700 font-medium">#Top 100 Stablecoin Holder</strong>
+			<strong className="text-white-700 font-bold text-gradient">#Top 100 Stablecoin Holder</strong>
 			<div className="mt-4 flex flex-col gap-3">
 				{popularProducts.map((product) => (
 					<Link

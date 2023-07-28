@@ -12,6 +12,9 @@ import Name from '../components/Name'
 import Marketcap from '../components/Marketcap'
 import Holderchart from '../components/Holderchart'
 import ActiveHolder from '../components/ActiveHolder'
+import Walletfunds from '../components/Walletfunds'
+import LiquidMarket from '../components/LiquidMarket'
+import Liquidity from '../components/Liquidity'
 export default function Coins() {
 	return (
 		<div className="flex flex-col gap-4">
@@ -35,6 +38,13 @@ export default function Coins() {
 				<Holderchart/>
 				<ActiveHolder/>
 			</div>
+			<div>
+			<Walletfunds/>
+			</div>
+			<div>
+			<LiquidMarket/>
+			</div>
+			
 		</div>
 	)
 }
