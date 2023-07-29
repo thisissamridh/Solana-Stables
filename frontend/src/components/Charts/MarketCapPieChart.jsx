@@ -11,9 +11,9 @@
 
 import React, { useContext } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
-import { DataContext } from '../context/DataContext';
-import { getColor } from '../utils/utils';
-import formatNumber from '../utils/FormatNumber';
+import { DataContext } from '../../context/DataContext';
+import { getColor } from '../../utils/utils';
+import formatNumber from '../../utils/FormatNumber';
 
 export default function StableCoinPieChart() {
 	const { individualCoinMcpData, stablecoinsID } = useContext(DataContext);

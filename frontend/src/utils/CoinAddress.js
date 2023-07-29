@@ -7,9 +7,10 @@ const stablecoinAddressMapping = {
         "6nuaX3ogrr2CaoAPjtaKHAoBNWok32BMcRozuf32s2QF",
         '5RpUwQ8wtdPCZHhu6MERp2RGrpobsbZ6MH5dDHkUjs2' // allbridge
     ],
+    MAI: ['9mWRABuz2x6koTPCWiCPM49WUbcrNqGTHBV9T9k7y1o7', { reserved: 'CYEFQXzQM6E5P8ZrXgS7XMSwU3CiqHMMyACX4zuaA2Z4' }],
     PAI: 'Ea5SjE2Y6yvCeW5dYTn7PYMuW5ikXkvbGdcmSnXeaLjS',
     UXD: '7kbnvuGBxxj8AG9qp8Scn56muWGaRaFqxg1FsRp3PaFT',
-    USDH: 'USDH1SM1ojwWUga67PGrgFWUHibbjqMvuMaDkRJTgkXUSDH1SM1ojwWUga67PGrgFWUHibbjqMvuMaDkRJTgkX',
+    USDH: 'USDH1SM1ojwWUga67PGrgFWUHibbjqMvuMaDkRJTgkX',
     USDR: 'USDrbBQwQbQ2oWHUPfA8QBHcyVxKUq1xHyXsSLKdUq2',
     DAI: 'EjmyN6qEC1Tf1JxiG1ae7UTJhUxSwk1TCWNWqxWV4J6o',
     USH: '9iLH8T7zoWhY7sBmj1WK9ENbWdS1nL8n9wAxaeRitTa6',
@@ -20,12 +21,14 @@ const stablecoinAddressMapping = {
         "5RpUwQ8wtdPCZHhu6MERp2RGrpobsbZ6MH5dDHkUjs2"
     ], // allbridge],
     FRAX: 'FR87nWEUxVgerFGhZM8Y4AggKGLnaXswr1Pd8wZ4kZcp',
-    // MAI: '',
-    // AGEUR: '',
-    // USDK: '',
-    // CEUR: '',
-    // CUSD: '',
-    // HUSD: '',
+    AGEUR: 'CbNYA9n3927uXUukee2Hf4tm3xxkffJPPZvGazc2EAH1',
+    USDK: '43m2ewFV5nDepieFjT9EmAQnc1HRtAF247RBpLGFem5F',
+    CEUR: '7g166TuBmnoHKvS2PEkZx6kREZtbfjUxCHGWjCqoDXZv',
+    CUSD: 'CUSDvqAQLbt7fRofcmV2EXfPA2t36kzj7FjzdmqDiNQL',
+    HUSD: [
+        "7VQo3HFLNH5QqGtM8eC3XQbPkJUu7nS9LeGWjerRh5Sw", // wormhole v2
+        "BybpSTBoZHsmKnfxYG47GDhVPKrnEKX31CScShbrzUhX", // wormhole v1
+    ], //from eth,
 };
 
 export default stablecoinAddressMapping;

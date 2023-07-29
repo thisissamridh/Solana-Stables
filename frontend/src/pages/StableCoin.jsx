@@ -1,9 +1,9 @@
 import React from 'react';
 import DashboardStatsGrid from '../components/DashboardStatsGrid';
-import StableCoinLineChart from '../components/MarketCapLineChart';
+import StableCoinLineChart from '../components/Charts/MarketCapLineChart';
 import RecentOrders from '../components/RecentOrders';
-import StableCoinPieChart from '../components/MarketCapPieChart';
-import PopularProducts from '../components/PopularProducts';
+import StableCoinPieChart from '../components/Charts/MarketCapPieChart';
+
 import { DataProvider } from '../context/DataContext';
 import { useParams } from 'react-router-dom';
 import MarketOverview from '../components/MarketOverview';

@@ -51,10 +51,10 @@
 
 
 import React, { useContext } from 'react';
-import { ComposedChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { DataContext } from '../context/DataContext';
-import formatNumber from '../utils/FormatNumber';
-import { getColor } from '../utils/utils'; // Create a separate file for getColor function
+import { ComposedChart, Area, XAxis, Brush, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { DataContext } from '../../context/DataContext';
+import formatNumber from '../../utils/FormatNumber';
+import { getColor } from '../../utils/utils'; // Create a separate file for getColor function
 
 export default function StableCoinLineChart({ coinName }) {
     const { individualCoinMcpData, stablecoinsID } = useContext(DataContext);
@@ -81,10 +81,35 @@ export default function StableCoinLineChart({ coinName }) {
                                     <stop offset="95%" stopColor="#82ca9d" stopOpacity={0.8} />
                                 </linearGradient>
                             </defs>
-                            <XAxis dataKey="date" />
+                            <XAxis
+                                dataKey="date"
+                                tickFormatter={(str) => {
+                                    const date = new Date(str);
+                                    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + String(date.getFullYear()).substr(-2);
+                                }}
+                            />
                             <YAxis tickFormatter={formatNumber} />
                             <CartesianGrid strokeDasharray="3 3" />
-                            <Tooltip formatter={(value) => formatNumber(value)} />
+                            <Tooltip
+                                formatter={(value) => formatNumber(value)}
+                                content={({ active, payload, label }) => {
+                                    if (active && payload && payload.length) {
+                                        return (
+                                            <div className="custom-tooltip bg-gray-100 border border-gray-200 p-2 rounded">
+                                                <p className="label text-green-600">{`Date : ${label}`}</p>
+                                                {payload.map((entry, index) => (
+                                                    <p key={`item-${index}`} style={{ color: entry.color }}>
+                                                        {`${entry.name} : ${formatNumber(entry.value)}`}
+                                                    </p>
+                                                ))}
+                                            </div>
+                                        );
+                                    }
+
+                                    return null;
+                                }}
+                            />
+
                             <Legend />
 
                             {/* Render the Area component for the selected coin, or all coins if no coinName is provided */}
@@ -108,6 +133,7 @@ export default function StableCoinLineChart({ coinName }) {
                                     />
                                 ))
                             )}
+                            <Brush />
                         </ComposedChart>
                     ) : (
                         <div>Chart data is loading...</div>

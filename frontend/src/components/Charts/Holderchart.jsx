@@ -1,49 +1,16 @@
-// import React from 'react';
-// import { ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
-// export default function ActiveHolder() {
-//     // Sample data for the chart
-//     const chartData = [
-//         { date: '2022-01-01', value: 100 },
-//         { date: '2022-02-01', value: 200 },
-//         { date: '2022-03-01', value: 300 },
-//         { date: '2022-04-01', value: 400 },
-//         { date: '2022-05-01', value: 500 },
-//     ];
-
-//     return (
-//         <div className="w-1/2 max-w-[35rem] h-[22rem] bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg">
-//             <strong className="text-white-700 font-large text-2xl text-gradient">Holder's Chart</strong>
-//             <div className="mt-4 w-full flex-1 text-md">
-//                 <ResponsiveContainer width="100%" height="100%">
-//                     <ComposedChart data={chartData} margin={{ top: 5, right: 30, left: -10, bottom: 5 }}>
-//                         <XAxis dataKey="date" />
-//                         <YAxis />
-//                         <CartesianGrid strokeDasharray="3 3" />
-//                         <Tooltip />
-//                         <Legend />
-
-//                         {/* Render the Line component for the demo data */}
-//                         <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
-//                     </ComposedChart>
-//                 </ResponsiveContainer>
-//             </div>
-//         </div>
-//     );
-// }
-
-
 import React, { useContext, useState, useEffect } from 'react';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Brush } from 'recharts';
 import { DataContext } from '../../context/DataContext';
 import ChartLoader from '../Helper/ChartLoader';
-import Dropdown from '../Helper/Dropdown';
+import formatNumber from '../../utils/FormatNumber';
+// import Dropdown from '../Helper/Dropdown';
 const HolderChart = ({ coinName }) => {
     const { holderData } = useContext(DataContext);
 
     const [chartData, setChartData] = useState(null);
     const [selectedOption, setSelectedOption] = useState('totalHolders');
 
+    console.log("Holder Datwwwsa:", holderData);
     useEffect(() => {
 
         let data = {};
@@ -125,6 +92,53 @@ const HolderChart = ({ coinName }) => {
                     <Brush />
                 </LineChart>
             </ResponsiveContainer>
+            <div className="w-full h-[22rem] bg-black-gradient p-4 rounded-md flex flex-col flex-1 shadow-xl">
+                <strong className="text-white-700 font-bond text-gradient">Stablecoin Market Cap</strong>
+                <div className="mt-3 w-full flex-1 text-xs"></div>
+                <ResponsiveContainer width="100%" height="100%">
+                    <LineChart
+                        data={chartData}
+                        margin={{
+                            top: 5, right: 30, left: 20, bottom: 5,
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis
+                            dataKey="date"
+                            tickFormatter={(str) => {
+                                const date = new Date(str);
+                                return date.getDate() + '/' + (date.getMonth() + 1) + '/' + String(date.getFullYear()).substr(-2);
+                            }}
+                        />
+                        <YAxis tickFormatter={formatNumber} />
+                        <Tooltip
+                            formatter={(value) => formatNumber(value)}
+                            content={({ active, payload, label }) => {
+                                if (active && payload && payload.length) {
+                                    return (
+                                        <div className="custom-tooltip bg-gray-100 border border-gray-200 p-2 rounded">
+                                            <p className="label text-black">{`Date : ${label}`}</p>
+                                            {payload.map((entry, index) => (
+                                                <p key={`item-${index}`} style={{ color: entry.color }}>
+                                                    {`${entry.name} : ${formatNumber(entry.value)}`}
+                                                </p>
+                                            ))}
+                                        </div>
+                                    );
+                                }
+
+                                return null;
+                            }}
+                        />
+
+                        <Legend />
+                        {selectedOption === 'totalHolders' || selectedOption === 'both' ? <Line type="monotone" dataKey="totalHolders" stroke="#8884d8" activeDot={{ r: 8 }} /> : null}
+                        {selectedOption === 'activeHolders' || selectedOption === 'both' ? <Line type="monotone" dataKey="activeHolders" stroke="#82ca9d" /> : null}
+                        <Brush />
+                    </LineChart>
+                </ResponsiveContainer>
+
+            </div>
         </div>
 
 

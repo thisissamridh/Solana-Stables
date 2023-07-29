@@ -1,8 +1,8 @@
 import React from 'react'
 import DashboardStatsGrid from '../components/DashboardStatsGrid'
-import StableCoinLineChart from '../components/MarketCapLineChart'
+import StableCoinLineChart from '../components/Charts/MarketCapLineChart'
 import RecentOrders from '../components/RecentOrders'
-import StableCoinPieChart from '../components/MarketCapPieChart'
+import StableCoinPieChart from '../components/Charts/MarketCapPieChart'
 import PopularProducts from '../components/PopularProducts'
 import { DataProvider } from '../context/DataContext';
 import { useParams } from 'react-router-dom';
@@ -12,7 +12,7 @@ import Name from '../components/Name'
 import Marketcap from '../components/Marketcap'
 import Holderchart from '../components/Charts/Holderchart'
 import ActiveHolder from '../components/ActiveHolder'
-import Walletfunds from '../components/Walletfunds'
+import Walletfunds from '../components/Charts/Walletfunds'
 import LiquidMarket from '../components/LiquidMarket'
 export default function Coins() {
 	return (
@@ -25,23 +25,33 @@ export default function Coins() {
 			</div>
 
 			<div className="flex flex-col md:flex-row gap-4 w-full">
-    <Marketcap />
-    <PopularProducts />
-</div>
-
+				<Marketcap />
+				<PopularProducts />
+			</div>
+			<div>
+				<StableCoinLineChart coinName={'USDT'} />
+				<StableCoinPieChart />
+				{/* <PopularProducts /> */}
+			</div>
 			<div>
 				<RecentOrders />
 			</div>
+			<div>
+
+			</div>
 			<div className='flex gap-3 w-full items-center justify-center'>
 				<Holderchart />
-			</div>
+				{/* <ActiveHolder /> */}
+			</div >
 			<div>
-				<Walletfunds />
+				{/* <Walletfunds /> */}
 			</div>
 			<div>
 				<LiquidMarket />
 			</div>
 
-		</div>
+		</div >
+
+
 	)
 }

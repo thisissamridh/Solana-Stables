@@ -92,25 +92,63 @@
 
 
 
-import React from 'react'
-import HolderChart from '../components/Charts/Holderchart'
-const Dev = () => {
+// import React, { useEffect, useContext } from 'react';
+// import HolderChart from '../components/Charts/Holderchart';
+// import { fetchwalletDisdata } from '../api/walletDistributionApi';
+// import { DataContext } from '../context/DataContext';
+
+// const Dev = () => {
+//     const { walletDisData } = useContext(DataContext);
+
+// useEffect(() => {
+//     const fetchData = async () => {
+//         try {
+//             const data = await fetchwalletDisdata('Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB');
+//             console.log("API Data:", data);
+//         } catch (error) {
+//             console.error('Error:', error);
+//         }
+//     };
+//     fetchData();
+// }, []);
+
+//     console.log("Wallet Distribution Data:", walletDisData);
+
+//     return (
+//         <div>
+//             {/* Render your components or charts */}
+//             <HolderChart coinName='USDT' />
+//             <HolderChart coinName='USDC' />
+//         </div>
+//     );
+// };
+
+// export default Dev;
+
+
+
+
+
+
+
+
+
+
+import React, { useContext } from 'react';
+import { DataContext } from '../context/DataContext';
+import Walletfunds from '../components/Charts/Walletfunds'
+const WalletDistDataDisplay = () => {
+    const { walletDistData } = useContext(DataContext);
+    console.log("Wallet Distribution Data:", walletDistData);
+
     return (
         <div>
-            <HolderChart coinName='USDT' />
-            <HolderChart coinName='USDC' />
+            {/* <Walletfunds coinName='USDT' />
+            <Walletfunds /> */}
         </div>
-    )
-}
+    );
+};
 
-export default Dev
-
-
-
-
-
-
-
-
+export default WalletDistDataDisplay;
 
 
