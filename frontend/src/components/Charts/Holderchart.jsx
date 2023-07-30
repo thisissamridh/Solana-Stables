@@ -102,7 +102,7 @@ const HolderChart = ({ coinName }) => {
     return (
 
 
-        <div style={{ position: 'relative', width: '100%', height: 400 }}>
+        <div className='bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg' style={{ position: 'relative', width: '100%', height: 400 }}>
             <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} style={{ position: 'absolute', top: 10, right: 10, zIndex: 1 }}>
                 <option value="totalHolders">Total Holders</option>
                 <option value="activeHolders">Active Holders</option>
@@ -120,7 +120,7 @@ const HolderChart = ({ coinName }) => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    {selectedOption === 'totalHolders' || selectedOption === 'both' ? <Line type="monotone" dataKey="totalHolders" stroke="#8884d8" activeDot={{ r: 8 }} /> : null}
+                    {selectedOption === 'totalHolders' || selectedOption === 'both' ? <Line type="monotone" dataKey="totalHolders" stroke="" activeDot={{ r: 8 }} /> : null}
                     {selectedOption === 'activeHolders' || selectedOption === 'both' ? <Line type="monotone" dataKey="activeHolders" stroke="#82ca9d" /> : null}
                     <Brush />
                 </LineChart>

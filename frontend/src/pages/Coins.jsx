@@ -18,24 +18,22 @@ export default function Coins() {
 	return (
 		<div className="flex flex-col gap-4">
 			<Name />
-			<div className="flex gap-4 w-full  justify-center ">
+			<div className=" gap-4 w-full  justify-center ">
 				<DataProvider >
 					<MarketOverview className="flex-1" />
-					<ProfileSummary className="flex-1" />
 				</DataProvider>
 			</div>
 
-			<div className="flex flex-row gap-4 w-full">
+			<div className="flex flex-col md:flex-row gap-4 w-full">
+    <Marketcap />
+    <PopularProducts />
+</div>
 
-				<Marketcap />
-				<PopularProducts />
-			</div>
 			<div>
 				<RecentOrders />
 			</div>
 			<div className='flex gap-3 w-full items-center justify-center'>
 				<Holderchart />
-				<ActiveHolder />
 			</div>
 			<div>
 				<Walletfunds />

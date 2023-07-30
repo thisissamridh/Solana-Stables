@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { DataContext } from '../context/DataContext';
 import formatNumber from '../utils/FormatNumber';
-import { FaChartPie, FaCoins, FaUsers, FaVolumeUp } from 'react-icons/fa';
+import { FaChartPie, FaCoins, FaUsers, FaVolumeUp, FaIdCard, FaGavel } from 'react-icons/fa';
 
-export default function MarketOverview() {
+export default function CombinedComponent() {
   const { individualCoinMcpData, stablecoinsID } = useContext(DataContext);
 
   // Filter data to get the latest entry for each stablecoin
@@ -20,23 +20,53 @@ export default function MarketOverview() {
   const totalMarketCap = Object.values(latestData).reduce((total, val) => total + val, 0);
 
   return (
-<div className="w-1/2 max-w-[35rem] h-[22rem] bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg">      <strong className="text-white-700 font-large text-2xl text-gradient">Market Overview</strong>
-      <div className="mt-4 w-full flex-1 text-md">
-        <div className="p-2 text-lg font-bold flex items-center">
-          <FaChartPie className="mr-2  text-blue-500" />
-          Market Cap:  <p className=' font-light px-2 '>{formatNumber(totalMarketCap)} </p>
+    <div className="flex flex-col md:flex-row gap-4">
+      <div className="w-full h-[22rem] bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg">
+        <strong className="text-white-700 font-large text-2xl text-gradient">Market Overview</strong>
+        <div className="mt-4 w-full flex-1 text-md">
+          <div className="p-2 text-lg font-bold flex items-center">
+            <FaChartPie className="mr-2 text-blue-500" />
+            Market Cap: <p className='font-light px-2'>{formatNumber(totalMarketCap)}</p>
+          </div>
+          <div className="p-2 text-lg font-bold flex items-center">
+            <FaCoins className="mr-2 text-yellow-500" />
+            Current Supply: <p className='font-light px-2'>{formatNumber(totalMarketCap)}</p>
+          </div>
+          <div className="p-2 text-lg font-bold flex items-center">
+            <FaUsers className="mr-2 text-green-500" />
+            Total Holder: <p className='font-light px-2'>{formatNumber(totalMarketCap)}</p>
+          </div>
+          <div className="p-2 text-lg font-bold flex items-center">
+            <FaVolumeUp className="mr-2 text-red -500" />
+            Volume: <p className='font-light px-2'>{formatNumber(totalMarketCap)}</p>
+          </div>
         </div>
-        <div className="p-2 text-lg font-bold flex items-center">
-          <FaCoins className="mr-2  text-yellow-500" />
-          Current Supply:  <p className=' font-light px-2 '>{formatNumber(totalMarketCap)} </p>
-        </div>
-        <div className="p-2 text-lg font-bold flex items-center">
-          <FaUsers className="mr-2  text-green-500" />
-          Total Holder:  <p className=' font-light px-2 '>{formatNumber(totalMarketCap)} </p>
-        </div>
-        <div className="p-2 text-lg font-bold flex items-center">
-          <FaVolumeUp className="mr-2  text-red -500" />
-          Volume:  <p className=' font-light px-2 '>{formatNumber(totalMarketCap)} </p>
+      </div>
+
+      <div className="w-full h-[22rem] bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg">
+        <strong className="text-white-700 font-large text-2xl text-gradient">Profile Summary</strong>
+        <div className="mt-4 w-full flex-1 text-md">
+          <div className="p-2 text-lg font-bold flex items-center">
+            <FaIdCard className="mr-2 text-blue -500" />
+            Token Name: <p className='font-light px-2'>{formatNumber(totalMarketCap)}</p>
+          </div>
+          <div className="p-2 text-lg font-bold flex items-center">
+            <FaCoins className="mr-2 text-yellow -500" />
+            Token address: <p className='font-light px-2'>{formatNumber(totalMarketCap)}</p>
+          </div>
+          <div className="p-2 text-lg font-bold flex items-center">
+            <FaUsers className="mr-2 text-green -500" />
+            Owners Program: <p className='font-light px-2'>{formatNumber(totalMarketCap)}</p>
+          </div>
+          <div className="p-2 text-lg font-bold flex items-center">
+            <FaGavel className="mr-2 text-red -500" />
+            Authority: <p className='font-light px-2'>{formatNumber(totalMarketCap)}</p>
+          </div>
+          <div className="p-2 text-lg font-bold flex items-center">
+            <FaVolumeUp className="mr-2 text-purple -500" />
+            Decimal: <p className='font-light px-2'>{formatNumber(totalMarketCap)}</p>
+          </div>
+
         </div>
       </div>
     </div>
