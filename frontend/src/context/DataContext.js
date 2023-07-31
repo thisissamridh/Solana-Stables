@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { fetchStablecoinData } from '../api/marketCapApi';
 import { fetchHolderData } from '../api/tokenHolderApi';
+import { fetchMarketData } from '../api/MarketDataApi';
 import { fetchwalletDisdata } from '../api/walletDistributionApi';
 import CoinId from '../utils/coinId';
 import stablecoinAddressMapping from '../utils/CoinAddress';
@@ -9,11 +10,27 @@ const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
     const stablecoinsID = CoinId;
-
+    const [coinData, setCoinData] = useState({});
     const [individualCoinMcpData, setIndividualCoinMcpData] = useState([]);
     const [totalMarketCap, setTotalMarketCap] = useState(0);
     const [holderData, setHolderData] = useState({});
     const [walletDistData, setWalletDistData] = useState({});
+
+
+    const fetchCoinData = async () => {
+        try {
+            const marketPromises = Object.entries(stablecoinAddressMapping).map(([coinName, address]) => fetchMarketData(address));
+            const marketResults = await Promise.all(marketPromises);
+            const coinData = {};
+            Object.keys(stablecoinAddressMapping).forEach((coinName, index) => {
+                coinData[coinName] = marketResults[index];
+            });
+            setCoinData(coinData);
+        } catch (error) {
+            console.error('Error fetching coin data:', error);
+        }
+    };
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -179,6 +196,9 @@ const DataProvider = ({ children }) => {
 
 
 
+                fetchCoinData();
+
+
                 setHolderData(holderData);
                 setWalletDistData(walletDistData);
 
@@ -196,7 +216,7 @@ const DataProvider = ({ children }) => {
     }, []);
 
     return (
-        <DataContext.Provider value={{ individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData }}>
+        <DataContext.Provider value={{ individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData, coinData }}>
 
             {children}
         </DataContext.Provider>

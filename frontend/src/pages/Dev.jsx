@@ -138,8 +138,9 @@ import React, { useContext } from 'react';
 import { DataContext } from '../context/DataContext';
 import Walletfunds from '../components/Charts/Walletfunds'
 const WalletDistDataDisplay = () => {
-    const { walletDistData } = useContext(DataContext);
+    const { walletDistData, coinData } = useContext(DataContext);
     console.log("Wallet Distribution Data:", walletDistData);
+    console.log("Coin Data:", coinData.USDT);
 
     return (
         <div>
