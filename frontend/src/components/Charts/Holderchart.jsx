@@ -70,10 +70,12 @@ const HolderChart = ({ coinName }) => {
 
 
         <div className='bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg' style={{ position: 'relative', width: '100%', height: 400 }}>
-            <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} style={{ position: 'absolute', top: 10, right: 10, zIndex: 1 }}>
-                <option value="totalHolders">Total Holders</option>
-                <option value="activeHolders">Active Holders</option>
-                <option value="both">Both</option>
+                                    <strong className="text-white-700 bg-black-gradientfont-bond text-gradient px-2 py-3">Stablecoin Market Cap</strong>
+
+            <select className='bg-black-gradient py-1 px-2 rounded-md' value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} style={{ position: 'absolute', top: 10, right: 10, zIndex: 1 }}>
+                <option className=' font-bold bg-black'value="totalHolders">Total Holders</option>
+                <option className=' font-bold bg-black' value="activeHolders">Active Holders</option>
+                <option className=' font-bold bg-black' value="both">Both</option>
             </select>
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
@@ -88,12 +90,11 @@ const HolderChart = ({ coinName }) => {
                     <Tooltip />
                     <Legend />
                     {selectedOption === 'totalHolders' || selectedOption === 'both' ? <Line type="monotone" dataKey="totalHolders" stroke="" activeDot={{ r: 8 }} /> : null}
-                    {selectedOption === 'activeHolders' || selectedOption === 'both' ? <Line type="monotone" dataKey="activeHolders" stroke="#82ca9d" /> : null}
+                    {selectedOption === 'activeHolders' || selectedOption === 'both' ? <Line type="monotone" dataKey="activeHolders" stroke="#82ca9d"  /> : null}
                     <Brush />
                 </LineChart>
             </ResponsiveContainer>
-            <div className="w-full h-[22rem] bg-black-gradient p-4 rounded-md flex flex-col flex-1 shadow-xl">
-                <strong className="text-white-700 font-bond text-gradient">Stablecoin Market Cap</strong>
+            <div className="w-full h-[22rem]  p-4 rounded-md flex flex-col flex-1 ">
                 <div className="mt-3 w-full flex-1 text-xs"></div>
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart
