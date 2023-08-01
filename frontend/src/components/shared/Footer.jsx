@@ -3,7 +3,7 @@ import { FaGithub } from 'react-icons/fa';
 
 function Footer() {
     return (
-        <footer className="bg-black-gradient-2 px-4 py-6 flex flex-col md:flex-row items-center justify-between shadow-xl rounded-xl">
+        <footer className=" px-4  flex flex-col md:flex-row items-center justify-between scrollbar-hide">
             <div className="text-center md:text-left">
                 <span className="text-neutral-200 text-lg text-gradient font-bold">StarBoard</span>
                 <p className="text-neutral-300 text-sm mt-2">
@@ -27,7 +27,7 @@ function Footer() {
             <div className="flex items-center mt-4 md:mt-0">
                 <FaGithub size={24} className="text-neutral-300" />
                 <a
-                    href="#"
+                    href="https://github.com/thisissamridh/StarBoard-Metrics"
                     className="ml-2 text-neutral-300 hover:text-white focus-visible:selection: px-3 py-2 rounded-md bg-black-gradient"
                 >
                     StarBoard on GitHub
