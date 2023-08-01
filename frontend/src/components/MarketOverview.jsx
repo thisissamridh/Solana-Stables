@@ -62,10 +62,7 @@ export default function CombinedComponent() {
             <FaGavel className="mr-2 text-red -500" />
             Authority: <p className='font-light px-2'>{formatNumber(totalMarketCap)}</p>
           </div>
-          <div className="px-4 py-3 text-xl font-bold flex items-center  rounded-xl w-50 ">
-            <FaVolumeUp className="mr-2 text-purple -500" />
-            Decimal: <p className='font-light px-2'>{formatNumber(totalMarketCap)}</p>
-          </div>
+          
 
         </div>
       </div>
