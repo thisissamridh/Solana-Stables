@@ -49,7 +49,7 @@ export default function Walletfunds({ coinName }) {
             <Bar dataKey={key} fill={'#82ca9d'} yAxisId="left" />
         )).concat(
             coinName ?
-                <Line type="monotone" dataKey="percentage" stroke="#FFF" strokeWidth={3} dot={{ r: 6 }} yAxisId="right" />
+                <Line type="monotone" dataKey="percentage" stroke="#FFA500" strokeWidth={3} dot={{ r: 6 }} yAxisId="right" />
                 : null
         );
 
@@ -63,8 +63,8 @@ export default function Walletfunds({ coinName }) {
             <div className="text-sm text-neutral-300">Token holding distribution by values ($)</div>
             <div className="mt-3 w-full flex-1 text-xs">
                 <ResponsiveContainer width="100%" height="100%">
-                    <ComposedChart data={chartData} margin={{ top: 5, right: 30, left: -10, bottom: 5 }}>
-                        <XAxis dataKey="label" tick={{ fill: '#000', fontSize: 12, fontWeight: 'bold', textTransform: 'uppercase' }} />
+                    <ComposedChart data={chartData} margin={{ top: 5, right: 30, left: -5, bottom: 5 }}>
+                        <XAxis dataKey="label" tick={{ fill: '#ffffff', fontSize: 12, fontWeight: 'bold', textTransform: 'uppercase' }} />
 
                         <YAxis tickFormatter={formatNumber} yAxisId="left" />
                         <YAxis tickFormatter={formatNumber} orientation='right' yAxisId="right" />
