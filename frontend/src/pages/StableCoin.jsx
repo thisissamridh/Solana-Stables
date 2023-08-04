@@ -1,7 +1,7 @@
 import React from 'react';
 import DashboardStatsGrid from '../components/DashboardStatsGrid';
 import StableCoinLineChart from '../components/Charts/MarketCapLineChart';
-import RecentOrders from '../components/RecentOrders';
+
 import StableCoinPieChart from '../components/Charts/MarketCapPieChart';
 
 import { DataProvider } from '../context/DataContext';
@@ -32,7 +32,7 @@ export default function Dashboard() {
 					<StableCoinPieChart className="flex-1" />
 				</div>
 				<div className="flex flex-col md:flex-row gap-4 w-full">
-					<RecentOrders coinAddress={coinAddress} className="flex-1" />
+					{/* <RecentOrders coinAddress={coinAddress} className="flex-1" /> */}
 					{/* <PopularProducts coinAddress={coinAddress} className="flex-1" /> */}
 				</div>
 			</div>

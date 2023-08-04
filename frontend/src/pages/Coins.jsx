@@ -1,12 +1,15 @@
 import React from 'react'
 import StableCoinLineChart from '../components/Charts/MarketCapLineChart'
-import RecentOrders from '../components/RecentOrders'
+import TopHolderTable from '../components/TopHolderTable'
+import StableCoinPieChart from '../components/Charts/MarketCapPieChart'
 import PopularProducts from '../components/PopularProducts'
 import { DataProvider } from '../context/DataContext';
 import MarketOverview from '../components/MarketOverview'
 import Name from '../components/Name'
 import Marketcap from '../components/Marketcap'
 import Holderchart from '../components/Charts/Holderchart'
+
+import Walletfunds from '../components/Charts/Walletfunds'
 import LiquidMarket from '../components/LiquidMarket'
 import Footer from '../components/shared/Footer';
 export default function Coins() {
@@ -16,7 +19,7 @@ export default function Coins() {
 			<div className=" gap-4 w-full  justify-center ">
 				<DataProvider >
 					<MarketOverview className="flex-1" />
-					
+
 				</DataProvider>
 			</div>
 
@@ -26,10 +29,11 @@ export default function Coins() {
 			</div>
 			<div>
 				<StableCoinLineChart coinName={'USDT'} />
+				{/* <StableCoinPieChart /> */}
 				{/* <PopularProducts /> */}
 			</div>
 			<div>
-				<RecentOrders />
+				<TopHolderTable coinName={'USDT'} />
 			</div>
 			<div>
 
@@ -39,14 +43,14 @@ export default function Coins() {
 				{/* <ActiveHolder /> */}
 			</div >
 			<div>
-				{/* <Walletfunds /> */}
+				<Walletfunds coinName={"USDT"} />
 			</div>
 			<div>
 				<LiquidMarket />
 			</div>
 			<div className='flex flex-col flex-1'>
-      			  <Footer />
-     	 </div>
+				<Footer />
+			</div>
 
 		</div >
 

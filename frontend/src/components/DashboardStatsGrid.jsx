@@ -8,7 +8,7 @@ export default function DashboardStatsGrid() {
 
       <BoxWrapper>
         <div className="rounded-full h-8 md:h-12 w-8 md:w-12 flex items-center justify-center">
-          <IoWalletSharp className="text-2xl" /> 
+          <IoWalletSharp className="text-2xl" />
         </div>
         <div className="pl-2 md:pl-4">
           <span className="text-xs md:text-sm text-gradient font-normal">Stablecoin Supply</span>
@@ -60,7 +60,7 @@ export default function DashboardStatsGrid() {
 }
 
 function BoxWrapper({ children }) {
-    return (
-        <div className="bg-black-gradient rounded-md p-3 md:p-4 flex flex-col md:flex-row items-center shadow-xl">{children}</div>
-    );
+  return (
+    <div className="bg-black-gradient rounded-md p-3 md:p-4 flex flex-col md:flex-row items-center shadow-xl">{children}</div>
+  );
 }

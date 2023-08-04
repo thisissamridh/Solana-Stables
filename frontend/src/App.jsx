@@ -12,7 +12,6 @@ const Dev = React.lazy(() => import('./pages/Dev'));
 function App() {
     return (
         <DataProvider>
-
             <Router>
                 <Routes>
                     <Route path="/" element={<Layout />}>

@@ -1,43 +1,61 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ComposedChart, Area, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import formatNumber from '../../utils/FormatNumber';
 import { getColor } from '../../utils/utils';
 import { DataContext } from '../../context/DataContext';
 
-export default function Walletfunds() {
+export default function Walletfunds({ coinName }) {
 
-    // Get wallet distribution data from DataContext
-    const { walletDistData } = useContext(DataContext);
     const [chartData, setChartData] = useState([]);
 
-    // Process the data
-    useEffect(() => {
-        const usdtLabels = walletDistData.USDT.map(data => data.label);
-        const combinedData = usdtLabels.map(label => ({
-            label,
-            ...Object.entries(walletDistData).reduce((acc, [coin, data]) => {
-                const coinData = data.find(d => d.label === label);
-                if (coinData) {
-                    acc[coin] = (acc[coin] || 0) + coinData.number;
-                    acc['percentage'] = (acc['percentage'] || 0) + coinData.percentage;
-                }
-                return acc;
-            }, {}),
-        }));
-        setChartData(combinedData);
-    }, [walletDistData]);
+    const { walletDistData } = useContext(DataContext);
 
-    // Render the chart components
+    useEffect(() => {
+        if (!walletDistData || !walletDistData['USDT']) return;
+
+        if (coinName && walletDistData[coinName]) {
+            setChartData(walletDistData[coinName]);
+        } else {
+            let formattedData = walletDistData['USDT'].map(({ label }) => {
+                let data = { label, totalNumber: 0 };
+                if (coinName) {
+                    data.totalPercentage = 0;
+                }
+                return data;
+            });
+
+            Object.entries(walletDistData).forEach(([coin, data]) => {
+                data.forEach(({ label, number, percentage }, i) => {
+                    const match = formattedData.find(d => d.label === label);
+                    if (match) {
+                        match.totalNumber += number;
+                        if (coinName) {
+                            match.totalPercentage += percentage;
+                        }
+                    }
+                });
+            });
+
+            setChartData(formattedData);
+        }
+    }, [walletDistData, coinName]);
+
+
+
     const renderChartComponents = () => {
+        if (!chartData[0]) return null;
+
         return Object.keys(chartData[0]).filter(key => key !== 'label' && key !== 'percentage').map((key, index) => (
-            <>
-                <Area type="monotone" dataKey={key} stroke={getColor(index)} fill="url(#gradient)" activeDot={{ r: 8 }} />
-                <Bar dataKey={key} fill={getColor(index)} />
-            </>
+            <Bar dataKey={key} fill={'#82ca9d'} yAxisId="left" />
         )).concat(
-            <Line type="monotone" dataKey="percentage" stroke="#000" dot={{ r: 6 }} />
+            coinName ?
+                <Line type="monotone" dataKey="percentage" stroke="#FFF" strokeWidth={3} dot={{ r: 6 }} yAxisId="right" />
+                : null
         );
+
     }
+
+
 
     return (
         <div className="w-full h-[22rem] bg-black-gradient p-4 rounded-md flex flex-col flex-1 shadow-xl">
@@ -46,19 +64,16 @@ export default function Walletfunds() {
             <div className="mt-3 w-full flex-1 text-xs">
                 <ResponsiveContainer width="100%" height="100%">
                     <ComposedChart data={chartData} margin={{ top: 5, right: 30, left: -10, bottom: 5 }}>
-                        <defs>
-                            <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                                <stop offset="95%" stopColor="#82ca9d" stopOpacity={0.8} />
-                            </linearGradient>
-                        </defs>
-                        <XAxis dataKey="label" />
-                        <YAxis tickFormatter={formatNumber} />
+                        <XAxis dataKey="label" tick={{ fill: '#000', fontSize: 12, fontWeight: 'bold', textTransform: 'uppercase' }} />
+
+                        <YAxis tickFormatter={formatNumber} yAxisId="left" />
+                        <YAxis tickFormatter={formatNumber} orientation='right' yAxisId="right" />
                         <CartesianGrid strokeDasharray="3 3" />
                         <Tooltip formatter={(value) => formatNumber(value)} />
                         <Legend />
                         {renderChartComponents()}
                     </ComposedChart>
+
                 </ResponsiveContainer>
             </div>
         </div>
