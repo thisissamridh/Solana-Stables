@@ -24,7 +24,7 @@ export default function Coins() {
 			</div>
 
 			<div className="flex flex-col md:flex-row gap-4 w-full">
-				<Marketcap />
+				<StableCoinLineChart />
 				<PopularProducts />
 			</div>
 			<div>
@@ -33,7 +33,7 @@ export default function Coins() {
 				{/* <PopularProducts /> */}
 			</div>
 			<div>
-				<TopHolderTable coinName={'USDT'} />
+				<TopHolderTable />
 			</div>
 			<div>
 

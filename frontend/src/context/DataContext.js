@@ -21,22 +21,43 @@ const DataProvider = ({ children }) => {
     // const defaultOffset = 0;
     const defaultSize = 10;
 
-    const fetchTopHolderData = async (offset, size) => {
+    // const fetchTopHolderData = async (offset, size) => {
+    //     try {
+    //         const topHolderPromises = Object.entries(stablecoinAddressMapping).map(([coinName, addresses]) => {
+    //             const address = Array.isArray(addresses) ? addresses[0] : addresses;
+    //             return fetchTopHolders(address, offset, size)
+    //         });
+    //         const topHolderResults = await Promise.all(topHolderPromises);
+    //         const topHolderData = {};
+    //         Object.keys(stablecoinAddressMapping).forEach((coinName, index) => {
+    //             topHolderData[coinName] = topHolderResults[index];
+    //         });
+    //         setHolderTopData(prevState => ({ ...prevState, ...topHolderData }));
+    //     } catch (error) {
+    //         console.error('Error fetching top holder data:', error);
+    //     }
+    // };
+
+
+    const fetchTopHolderData = async (coinName, offset, size) => {
         try {
-            const topHolderPromises = Object.entries(stablecoinAddressMapping).map(([coinName, addresses]) => {
-                const address = Array.isArray(addresses) ? addresses[0] : addresses;
-                return fetchTopHolders(address, offset, size)
-            });
-            const topHolderResults = await Promise.all(topHolderPromises);
-            const topHolderData = {};
-            Object.keys(stablecoinAddressMapping).forEach((coinName, index) => {
-                topHolderData[coinName] = topHolderResults[index];
-            });
-            setHolderTopData(prevState => ({ ...prevState, ...topHolderData }));
+            const address = Array.isArray(stablecoinAddressMapping[coinName]) ? stablecoinAddressMapping[coinName][0] : stablecoinAddressMapping[coinName];
+            const topHolders = await fetchTopHolders(address, offset, size);
+            setHolderTopData(prevState => ({
+                ...prevState,
+                [coinName]: prevState[coinName]
+                    ? { success: prevState[coinName].success, data: { result: [...prevState[coinName].data.result, ...topHolders.data.result], total: topHolders.data.total } }
+                    : topHolders
+            }));
         } catch (error) {
             console.error('Error fetching top holder data:', error);
         }
     };
+
+    const loadMore = (coinName) => {
+        const currentOffset = holderTopData[coinName]?.data?.result.length || 0;
+        fetchTopHolderData(coinName, currentOffset, defaultSize);
+    }
 
     const fetchCoinData = async () => {
         try {
@@ -52,10 +73,10 @@ const DataProvider = ({ children }) => {
         }
     };
 
-    const loadMore = () => {
-        setOffset(prevOffset => prevOffset + defaultSize);
-        fetchTopHolderData(offset + defaultSize, defaultSize);
-    }
+    // const loadMore = () => {
+    //     setOffset(prevOffset => prevOffset + defaultSize);
+    //     fetchTopHolderData(offset + defaultSize, defaultSize);
+    // }
 
 
     useEffect(() => {
@@ -231,14 +252,16 @@ const DataProvider = ({ children }) => {
 
 
 
-
+                Object.keys(stablecoinAddressMapping).forEach(coinName => {
+                    fetchTopHolderData(coinName, offset, defaultSize);
+                });
 
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
         fetchData();
-        fetchTopHolderData(offset, defaultSize);
+        // fetchTopHolderData(offset, defaultSize);
     }, [offset]);
 
     return (

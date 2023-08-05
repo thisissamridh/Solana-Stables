@@ -159,10 +159,11 @@ import React, { useContext, useEffect } from 'react';
 import { DataContext } from '../context/DataContext';  // Make sure to adjust the path based on your project structure
 
 const OtherComponent = () => {
-    const { holderTopData } = useContext(DataContext);
+    const { holderTopData, coinData } = useContext(DataContext);
 
     useEffect(() => {
         console.log("holder wala data", holderTopData);
+        console.log("coin wala data :", coinData)
     }, [holderTopData]);
 
     // ... your component rendering
