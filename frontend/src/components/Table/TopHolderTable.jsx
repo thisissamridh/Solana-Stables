@@ -18,9 +18,9 @@ const TopHolderTable = ({ coinName }) => {
     }
 
     return (
-        <div className="bg-black-gradient px-4 pt-3 pb-4 rounded-md  flex-1 shadow-xl">
+        <div className="bg-black-gradient px-4 pt-3 pb-4 rounded-md  flex-1 shadow-xl scrollbar-hide">
             <strong className="text-white-700 font-bold text-gradient">Top {recentOrderData.length} {coinName} Holders</strong>
-            <div className="overflow-x-auto overflow-y-auto h-64 rounded-sm mt-3" ref={tableRef}> {/* updated this line */}
+            <div className="overflow-x-auto overflow-y-auto h-64 rounded-sm mt-3 scrollbar-hide " ref={tableRef}> {/* updated this line */}
                 <table className="w-full text-white-700">
                     <thead className='bg-black-gradient '>
                         <tr>

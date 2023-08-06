@@ -36,7 +36,7 @@ const TopHoldersSummaryTable = () => {
     return null;
   }
   return (
-    <div className="bg-black-gradient px-4 pt-3 pb-4 rounded-md flex-1 shadow-xl">
+    <div className="bg-black-gradient px-4 pt-3 pb-4 rounded-md flex-1 shadow-xl scrollbar-hide">
       <strong className="text-white-700 font-bold text-gradient">Top Holders of Each Stablecoin</strong>
       <div className="overflow-x-auto overflow-y-auto h-64 rounded-sm mt-3">
         <table className="w-full text-white-700">

@@ -53,7 +53,7 @@ const Name = ({ selectedStablecoin, onSelectStablecoin }) => {
     };
 
     return (
-        <header className="bg-discount-gradient feature-card:hover rounded-lg shadow-lg p-4 flex justify-between items-center">
+        <header className="bg-discount-gradient feature-card:hover rounded-lg shadow-lg p-4 flex justify-between items-center scrollbar-hide">
             <h1 className="text-white text-2xl font-bold text-gradient">
                 {selectedStablecoin} Stablecoin Analysis
             </h1>
