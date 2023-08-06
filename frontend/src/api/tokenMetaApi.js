@@ -1,3 +1,4 @@
+import axios from 'axios';
 const fetchTokenMeta = async (tokenAddress) => {
     try {
         const response = await axios.get(`https://api.solscan.io/token/meta?token=${tokenAddress}`);

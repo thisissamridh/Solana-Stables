@@ -10,7 +10,7 @@ function Footer() {
                     The best open-sourced Stablecoin analytics platform.
                 </p>
             </div>
-            <div className="flex flex-col md:flex-row items-center mt-4 md:mt-0">
+            {/* <div className="flex flex-col md:flex-row items-center mt-4 md:mt-0">
                 <a
                     href="#"
                     className="text-neutral-300 hover:text-white focus:outline-none px-3 py-2 rounded-md bg-black-gradient hover:border-white"
@@ -23,7 +23,7 @@ function Footer() {
                 >
                     Contact Us
                 </a>
-            </div>
+            </div> */}
             <div className="flex items-center mt-4 md:mt-0">
                 <FaGithub size={24} className="text-neutral-300" />
                 <a

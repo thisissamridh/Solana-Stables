@@ -2,10 +2,10 @@ const stablecoinAddressMapping = {
     USDT: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
     USDC: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
     USTC: [
+        '5RpUwQ8wtdPCZHhu6MERp2RGrpobsbZ6MH5dDHkUjs2', // allbridge
         "33fsBLA8djQm82RpHmE3SuVrPGtZBWNYExsEUeKX1HXX", // wormhole
         "AJ1W9A9N9dEMdVyoDiam2rV44gnBm2csrPDP7xqcapgX", // wormhole
         "6nuaX3ogrr2CaoAPjtaKHAoBNWok32BMcRozuf32s2QF",
-        '5RpUwQ8wtdPCZHhu6MERp2RGrpobsbZ6MH5dDHkUjs2' // allbridge
     ],
     MAI: ['9mWRABuz2x6koTPCWiCPM49WUbcrNqGTHBV9T9k7y1o7',
         { reserved: 'CYEFQXzQM6E5P8ZrXgS7XMSwU3CiqHMMyACX4zuaA2Z4' }

@@ -3,6 +3,7 @@ import { fetchStablecoinData } from '../api/marketCapApi';
 import { fetchHolderData } from '../api/tokenHolderApi';
 import { fetchMarketData } from '../api/MarketDataApi';
 import { fetchwalletDisdata } from '../api/walletDistributionApi';
+import { fetchTokenMeta } from '../api/tokenMetaApi';
 import { fetchTopHolders } from '../api/topHoldersApi';
 import CoinId from '../utils/coinId';
 import stablecoinAddressMapping from '../utils/CoinAddress';
@@ -18,25 +19,27 @@ const DataProvider = ({ children }) => {
     const [walletDistData, setWalletDistData] = useState({});
     const [holderTopData, setHolderTopData] = useState({});
     const [offset, setOffset] = useState(0);
+    const [tokenMetaData, setTokenMetaData] = useState({});
     // const defaultOffset = 0;
     const defaultSize = 10;
 
-    // const fetchTopHolderData = async (offset, size) => {
-    //     try {
-    //         const topHolderPromises = Object.entries(stablecoinAddressMapping).map(([coinName, addresses]) => {
-    //             const address = Array.isArray(addresses) ? addresses[0] : addresses;
-    //             return fetchTopHolders(address, offset, size)
-    //         });
-    //         const topHolderResults = await Promise.all(topHolderPromises);
-    //         const topHolderData = {};
-    //         Object.keys(stablecoinAddressMapping).forEach((coinName, index) => {
-    //             topHolderData[coinName] = topHolderResults[index];
-    //         });
-    //         setHolderTopData(prevState => ({ ...prevState, ...topHolderData }));
-    //     } catch (error) {
-    //         console.error('Error fetching top holder data:', error);
-    //     }
-    // };
+
+    const fetchAllTokenMetaData = async () => {
+        try {
+            const tokenMetaPromises = Object.entries(stablecoinAddressMapping).map(([coinName, addresses]) => {
+                const address = Array.isArray(addresses) ? addresses[0] : addresses;
+                return fetchTokenMeta(address);
+            });
+            const tokenMetaResults = await Promise.all(tokenMetaPromises);
+            const tokenMetaData = {};
+            Object.keys(stablecoinAddressMapping).forEach((coinName, index) => {
+                tokenMetaData[coinName] = tokenMetaResults[index];
+            });
+            setTokenMetaData(tokenMetaData);
+        } catch (error) {
+            console.error('Error fetching token meta data:', error);
+        }
+    };
 
 
     const fetchTopHolderData = async (coinName, offset, size) => {
@@ -73,10 +76,7 @@ const DataProvider = ({ children }) => {
         }
     };
 
-    // const loadMore = () => {
-    //     setOffset(prevOffset => prevOffset + defaultSize);
-    //     fetchTopHolderData(offset + defaultSize, defaultSize);
-    // }
+
 
 
     useEffect(() => {
@@ -250,7 +250,7 @@ const DataProvider = ({ children }) => {
 
                 setTotalMarketCap(sumMarketCap);
 
-
+                fetchAllTokenMetaData();
 
                 Object.keys(stablecoinAddressMapping).forEach(coinName => {
                     fetchTopHolderData(coinName, offset, defaultSize);
@@ -265,7 +265,7 @@ const DataProvider = ({ children }) => {
     }, [offset]);
 
     return (
-        <DataContext.Provider value={{ individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData, coinData, holderTopData, loadMore }}>
+        <DataContext.Provider value={{ tokenMetaData, individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData, coinData, holderTopData, loadMore }}>
 
             {children}
         </DataContext.Provider>

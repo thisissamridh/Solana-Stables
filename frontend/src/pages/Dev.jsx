@@ -157,15 +157,23 @@
 
 import React, { useContext, useEffect } from 'react';
 import { DataContext } from '../context/DataContext';  // Make sure to adjust the path based on your project structure
-
+import TopHolderTable from '../components/Table/TopHolderTable'
 const OtherComponent = () => {
-    const { holderTopData, coinData } = useContext(DataContext);
+    const { tokenMetaData, holderTopData, coinData } = useContext(DataContext);
 
     useEffect(() => {
         console.log("holder wala data", holderTopData);
-        console.log("coin wala data :", coinData)
+        console.log("coin wala data :", coinData);
+        console.log("token metadata :", tokenMetaData);
     }, [holderTopData]);
 
+    return (
+        <div>
+            {/*  */}
+            <TopHolderTable />
+            <TopHolderTable coinName={"USDT"} />
+        </div>
+    );
     // ... your component rendering
 };
 

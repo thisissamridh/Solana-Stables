@@ -1,9 +1,9 @@
 import React from 'react'
 import DashboardStatsGrid from '../components/DashboardStatsGrid'
 import StableCoinLineChart from '../components/Charts/MarketCapLineChart'
-import TopHolderTable from '../components/TopHolderTable'
+import TopHolderTable from '../components/Table/TopHolderTable'
 import StableCoinPieChart from '../components/Charts/MarketCapPieChart'
-import PopularProducts from '../components/PopularProducts'
+import TopHoldersSummaryTable from '../components/Table/HolderSummary'
 import { DataProvider } from '../context/DataContext';
 import Footer from '../components/shared/Footer'
 import Header from '../components/shared/Header'
@@ -19,7 +19,7 @@ export default function Dashboard() {
       </div>
       <div className="flex flex-col md:flex-row gap-4 w-full">
         <TopHolderTable />
-        <PopularProducts />
+        <TopHoldersSummaryTable />
       </div>
       <div className="flex flex-col md:flex-row gap-4 w-full">
         <HolderChart />

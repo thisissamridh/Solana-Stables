@@ -1,10 +1,15 @@
 import React, { useContext, useRef } from 'react'; // added useRef import
 import { Link } from 'react-router-dom';
-import { DataContext } from '../context/DataContext'; // replace with the correct path to your DataContext
-
+import { DataContext } from '../../context/DataContext'; // replace with the correct path to your DataContext
+import addressData from './addressData.json';
 const TopHolderTable = ({ coinName }) => {
     const { holderTopData, loadMore } = useContext(DataContext);
     const recentOrderData = holderTopData[coinName]?.data?.result;
+
+
+    const getAddressName = (address) => {
+        return addressData.address[address] || addressData.program[address] || addressData.hacker[address] || addressData.trust_token[address] || address;
+    };
 
     const tableRef = useRef(null); // added this line
 
@@ -30,10 +35,14 @@ const TopHolderTable = ({ coinName }) => {
                             <tr key={holder.rank}>
                                 <td className='text-center'>{holder.rank}</td>
                                 <td className='text-center'>
-                                    <Link to={`https://solscan.io/account/${holder.address}`}>{holder.address}</Link>
+                                    <Link to={`https://solscan.io/account/${holder.address}`}>
+                                        {getAddressName(holder.address)}
+                                    </Link>
                                 </td>
                                 <td className='text-center'>
-                                    <Link to={`https://solscan.io/account/${holder.owner}`}>{holder.owner}</Link>
+                                    <Link to={`https://solscan.io/account/${holder.owner}`}>
+                                        {getAddressName(holder.owner)}
+                                    </Link>
                                 </td>
                                 <td className='text-center'>{holder.amount / Math.pow(10, holder.decimals)}</td>
                             </tr>
