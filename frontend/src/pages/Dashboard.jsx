@@ -7,6 +7,7 @@ import TopHoldersSummaryTable from '../components/Table/HolderSummary'
 import { DataProvider } from '../context/DataContext';
 import Footer from '../components/shared/Footer'
 import Header from '../components/shared/Header'
+import TokenTransferTable from '../components/Table/TransferTable'
 import HolderChart from '../components/Charts/Holderchart'
 import Walletfunds from '../components/Charts/Walletfunds'
 export default function Dashboard() {
@@ -23,6 +24,9 @@ export default function Dashboard() {
       </div>
       <div className="flex flex-col md:flex-row gap-4 w-full">
         <HolderChart />
+      </div>
+      <div className="flex flex-col md:flex-row gap-4 w-full">
+        <TokenTransferTable />
       </div>
       <div className="flex flex-col md:flex-row gap-4 w-full">
         <Walletfunds />

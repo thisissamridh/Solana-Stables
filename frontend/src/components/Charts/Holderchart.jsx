@@ -20,7 +20,7 @@ const HolderChart = ({ coinName }) => {
     const [chartData, setChartData] = useState(null);
     const [selectedOption, setSelectedOption] = useState('totalHolders');
 
-    console.log('Holder Datwwwsa:', holderData);
+    // console.log('Holder Datwwwsa:', holderData);
     useEffect(() => {
         let data = {};
         const referenceCoin = 'USDT';

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ComposedChart, Area, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import formatNumber from '../../utils/FormatNumber';
-import { getColor } from '../../utils/utils';
+// import { getColor } from '../../utils/utils';
 import { DataContext } from '../../context/DataContext';
 
 export default function Walletfunds({ coinName }) {

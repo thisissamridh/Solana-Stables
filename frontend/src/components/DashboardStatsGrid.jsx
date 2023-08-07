@@ -1,7 +1,49 @@
-import React from 'react';
+import { React, useContext } from 'react';
 import { IoWalletSharp, IoStatsChartSharp, IoTrendingDownSharp, IoLogoUsd } from 'react-icons/io5';
+import { DataContext } from '../context/DataContext';
+import formatNumber from '../utils/FormatNumber';
 
 export default function DashboardStatsGrid() {
+  const { individualCoinMcpData, tokenMetaData } = useContext(DataContext);
+  console.log(individualCoinMcpData)
+  const mcp = (individualCoinMcpData[individualCoinMcpData.length - 1])
+  const mcp7d = (individualCoinMcpData[individualCoinMcpData.length - 8])
+
+  // assuming mcp is your data
+  let sum = 0;
+  for (let key in mcp) {
+    if (typeof mcp[key] === 'number') {
+      sum += mcp[key];
+    }
+  }
+
+  // stablecoin  sum change 7d 
+  let sum7d = 0;
+  for (let key in mcp7d) {
+    if (typeof mcp7d[key] === 'number') {
+      sum7d += mcp7d[key];
+    }
+
+  }
+
+  let percentageChange7d = ((sum - sum7d) / sum7d) * 100;
+
+
+  // usdc dominance %
+
+  let usdt = 0;
+
+  for (let key in mcp) {
+    if (key === 'USDT') {
+      usdt += mcp[key];
+    }
+  }
+  let usdtDominance = (usdt / sum) * 100;
+
+
+
+
+  const totalHolders = Object.values(tokenMetaData).reduce((sum, meta) => sum + (meta.data?.holder || 0), 0);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -11,9 +53,9 @@ export default function DashboardStatsGrid() {
           <IoWalletSharp className="text-2xl" />
         </div>
         <div className="pl-2 md:pl-4">
-          <span className="text-xs md:text-sm text-gradient font-normal">Stablecoin Supply</span>
+          <span className="text-xs md:text-sm text-gradient font-normal">Total MarketCap</span>
           <div className="flex items-center">
-            <strong className="text-lg md:text-xl text-green-500 font-semibold">$73.22B</strong>
+            <strong className="text-lg md:text-xl text-green-500 font-semibold">${formatNumber(sum)}</strong>
           </div>
         </div>
       </BoxWrapper>
@@ -23,10 +65,13 @@ export default function DashboardStatsGrid() {
           <IoStatsChartSharp className="text-2xl" />
         </div>
         <div className="pl-2 md:pl-4">
-          <span className="text-xs md:text-sm text-gradient font-normal">Stablecoin TVL</span>
+          <span className="text-xs md:text-sm text-gradient font-normal">MarketCap Change 7D</span>
           <div className="flex items-center">
-            <strong className="text-lg md:text-xl text-green-500 font-semibold">$8.05%</strong>
+            <strong className={`text-lg md:text-xl font-semibold ${percentageChange7d < 0 ? 'text-red-500' : 'text-green-500'}`}>
+              {percentageChange7d.toFixed(2)}%
+            </strong>
           </div>
+
         </div>
       </BoxWrapper>
 
@@ -35,9 +80,9 @@ export default function DashboardStatsGrid() {
           <IoTrendingDownSharp className="text-2xl" />
         </div>
         <div className="pl-2 md:pl-4">
-          <span className="text-xs md:text-sm text-gradient font-normal">TVL Change 7D</span>
+          <span className="text-xs md:text-sm text-gradient font-normal">Total StableCoin Holders</span>
           <div className="flex items-center">
-            <strong className="text-lg md:text-xl text-red-500 font-semibold">-3.65%</strong>
+            <strong className="text-lg md:text-xl text-green-500 font-semibold">{totalHolders}</strong>
           </div>
         </div>
       </BoxWrapper>
@@ -47,9 +92,9 @@ export default function DashboardStatsGrid() {
           <IoLogoUsd className="text-2xl" />
         </div>
         <div className="pl-2 md:pl-4">
-          <span className="text-xs md:text-sm text-gradient font-normal">USDC Dominance</span>
+          <span className="text-xs md:text-sm text-gradient font-normal">USDT Dominance</span>
           <div className="flex items-center">
-            <strong className="text-lg md:text-xl text-green-500 font-semibold">53.20%</strong>
+            <strong className="text-lg md:text-xl text-green-500 font-semibold">{usdtDominance.toFixed(2)}%</strong>
           </div>
         </div>
       </BoxWrapper>

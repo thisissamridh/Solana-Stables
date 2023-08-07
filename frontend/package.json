@@ -4,6 +4,7 @@
     "private": true,
     "dependencies": {
         "@headlessui/react": "^1.6.4",
+        "@hellomoon/api": "^1.17.2",
         "axios": "^1.4.0",
         "classnames": "^2.3.1",
         "date-fns": "^2.28.0",

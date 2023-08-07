@@ -158,20 +158,26 @@
 import React, { useContext, useEffect } from 'react';
 import { DataContext } from '../context/DataContext';  // Make sure to adjust the path based on your project structure
 import TopHolderTable from '../components/Table/TopHolderTable'
+import TokenTransferTable from '../components/Table/TransferTable'
+import { fetchTokenStats } from '../api/helloMoonApi';
 const OtherComponent = () => {
-    const { tokenMetaData, holderTopData, coinData } = useContext(DataContext);
+    const { tokenMetaData, holderTopData, coinData, transferData, statsData } = useContext(DataContext);
 
     useEffect(() => {
         console.log("holder wala data", holderTopData);
         console.log("coin wala data :", coinData);
         console.log("token metadata :", tokenMetaData);
+        console.log("token transfer :", transferData);
+        console.log("token stats", statsData)
     }, [holderTopData]);
 
     return (
         <div>
             {/*  */}
-            <TopHolderTable />
-            <TopHolderTable coinName={"USDT"} />
+
+            {/* <TopHolderTable coinName={"USDT"} /> */}
+            <TokenTransferTable coinName={"USDT"} />
+            <TokenTransferTable />
         </div>
     );
     // ... your component rendering

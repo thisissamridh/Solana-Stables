@@ -30,7 +30,7 @@ const TopHoldersSummaryTable = () => {
       const holderB = tokenMetaData[b.coinName]?.data?.holder || 0;
       return holderB - holderA; // Sort in descending order
     });
-  console.log("Top Holders:", topHolders);
+  // console.log("Top Holders:", topHolders);
 
   if (!topHolders.length) {
     return null;

@@ -6,11 +6,11 @@ const fetchHolderData = async (tokenAddress) => {
             `https://api.solscan.io/token/holder/statistic/total?tokenAddress=${tokenAddress}`,
             {
                 method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                    'User-Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
-                },
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'Access-Control-Allow-Origin': '*',
+                //     'User-Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
+                // },
             }
         );
 

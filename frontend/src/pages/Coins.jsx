@@ -5,6 +5,7 @@ import { DataProvider } from '../context/DataContext';
 import MarketOverview from '../components/MarketOverview';
 import Name from '../components/Name';
 import Holderchart from '../components/Charts/Holderchart';
+import TokenTransferTable from '../components/Table/TransferTable'
 import Walletfunds from '../components/Charts/Walletfunds';
 import LiquidMarket from '../components/LiquidMarket';
 import Footer from '../components/shared/Footer';
@@ -29,6 +30,10 @@ export default function Coins() {
 
 			<div>
 				<TopHolderTable coinName={selectedStablecoin} />
+			</div>
+
+			<div>
+				<TokenTransferTable coinName={selectedStablecoin} />
 			</div>
 			<div className='flex gap-3 w-full items-center justify-center'>
 				<Holderchart coinName={selectedStablecoin} />

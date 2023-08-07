@@ -4,7 +4,10 @@ import { fetchHolderData } from '../api/tokenHolderApi';
 import { fetchMarketData } from '../api/MarketDataApi';
 import { fetchwalletDisdata } from '../api/walletDistributionApi';
 import { fetchTokenMeta } from '../api/tokenMetaApi';
+import { fetchTransferData } from '../api/tokenTransferApi';
 import { fetchTopHolders } from '../api/topHoldersApi';
+import { fetchStats } from '../api/helloMoonApi';
+
 import CoinId from '../utils/coinId';
 import stablecoinAddressMapping from '../utils/CoinAddress';
 const DataContext = createContext();
@@ -13,15 +16,70 @@ const DataContext = createContext();
 const DataProvider = ({ children }) => {
     const stablecoinsID = CoinId;
     const [coinData, setCoinData] = useState({});
+    const [statsData, setStatsData] = useState({});
     const [individualCoinMcpData, setIndividualCoinMcpData] = useState([]);
+    const [transferOffset, setTransferOffset] = useState(0);
     const [totalMarketCap, setTotalMarketCap] = useState(0);
     const [holderData, setHolderData] = useState({});
     const [walletDistData, setWalletDistData] = useState({});
     const [holderTopData, setHolderTopData] = useState({});
+    const [transferData, setTransferData] = useState({});
     const [offset, setOffset] = useState(0);
     const [tokenMetaData, setTokenMetaData] = useState({});
     // const defaultOffset = 0;
-    const defaultSize = 10;
+    const defaultSize = 20;
+
+    const fetchStatsData = async (coinName) => {
+        try {
+            const address = Array.isArray(stablecoinAddressMapping[coinName]) ? stablecoinAddressMapping[coinName][0] : stablecoinAddressMapping[coinName];
+            const stats = await fetchStats(address);
+            setStatsData(prevState => ({
+                ...prevState,
+                [coinName]: prevState[coinName]
+                    ? { ...prevState[coinName], ...stats }
+                    : stats
+            }));
+        } catch (error) {
+            console.error('Error fetching stats data:', error);
+        }
+    };
+
+
+    const fetchTransferDataForTokens = async (offset, size) => {
+        try {
+            const transferDataPromises = Object.entries(stablecoinAddressMapping).map(([coinName, addresses]) => {
+                const address = Array.isArray(addresses) ? addresses[0] : addresses;
+                return fetchTransferData(address, "spl-transfer", offset, size);
+            });
+
+            const transferDataResults = await Promise.all(transferDataPromises);
+
+            setTransferData(prevState => {
+                const newState = { ...prevState };
+
+                Object.keys(stablecoinAddressMapping).forEach((coinName, index) => {
+                    const prevTransfers = prevState[coinName]?.data?.items || [];
+                    const newTransfers = transferDataResults[index].data?.items || [];
+                    const mergedTransfers = [...prevTransfers, ...newTransfers];
+
+                    if (newState[coinName]) {
+                        newState[coinName].data.items = mergedTransfers;
+                        newState[coinName].data.hasNext = transferDataResults[index].data.hasNext; // updating hasNext value
+                    } else {
+                        newState[coinName] = transferDataResults[index];
+                    }
+                });
+
+                return newState;
+            });
+        } catch (error) {
+            console.error('Error fetching transfer data:', error);
+        }
+    };
+
+    const loadMoreTransfers = () => {
+        setTransferOffset(prevOffset => prevOffset + defaultSize);
+    };
 
 
     const fetchAllTokenMetaData = async () => {
@@ -251,9 +309,15 @@ const DataProvider = ({ children }) => {
                 setTotalMarketCap(sumMarketCap);
 
                 fetchAllTokenMetaData();
+                fetchTransferDataForTokens(transferOffset, defaultSize);
+
 
                 Object.keys(stablecoinAddressMapping).forEach(coinName => {
                     fetchTopHolderData(coinName, offset, defaultSize);
+                });
+
+                Object.keys(stablecoinAddressMapping).forEach(coinName => {
+                    fetchStatsData(coinName);
                 });
 
             } catch (error) {
@@ -262,11 +326,11 @@ const DataProvider = ({ children }) => {
         };
         fetchData();
         // fetchTopHolderData(offset, defaultSize);
-    }, [offset]);
+    }, [offset, transferOffset]);
 
     return (
-        <DataContext.Provider value={{ tokenMetaData, individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData, coinData, holderTopData, loadMore }}>
 
+        <DataContext.Provider value={{ tokenMetaData, individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData, coinData, holderTopData, transferData, loadMore, loadMoreTransfers, statsData }}>
             {children}
         </DataContext.Provider>
     );
