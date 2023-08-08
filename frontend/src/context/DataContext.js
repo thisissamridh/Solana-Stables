@@ -7,7 +7,7 @@ import { fetchTokenMeta } from '../api/tokenMetaApi';
 import { fetchTransferData } from '../api/tokenTransferApi';
 import { fetchTopHolders } from '../api/topHoldersApi';
 import { fetchStats } from '../api/helloMoonApi';
-
+import { fetchProgramDetails } from '../api/programDetailsApi';
 import CoinId from '../utils/coinId';
 import stablecoinAddressMapping from '../utils/CoinAddress';
 const DataContext = createContext();
@@ -26,8 +26,32 @@ const DataProvider = ({ children }) => {
     const [transferData, setTransferData] = useState({});
     const [offset, setOffset] = useState(0);
     const [tokenMetaData, setTokenMetaData] = useState({});
+    const [programDetailsData, setProgramDetailsData] = useState({});
     // const defaultOffset = 0;
     const defaultSize = 20;
+
+
+
+    const fetchAllProgramDetails = async () => {
+        try {
+            const programDetailsPromises = Object.entries(stablecoinAddressMapping).map(([coinName, addresses]) => {
+                const address = Array.isArray(addresses) ? addresses[0] : addresses;
+                return fetchProgramDetails(address);
+            });
+
+            const programDetailsResults = await Promise.all(programDetailsPromises);
+
+            const programDetailsData = {};
+            Object.keys(stablecoinAddressMapping).forEach((coinName, index) => {
+                programDetailsData[coinName] = programDetailsResults[index];
+            });
+
+            setProgramDetailsData(programDetailsData);
+        } catch (error) {
+            console.error('Error fetching program details data:', error);
+        }
+    };
+
 
     const fetchStatsData = async (coinName) => {
         try {
@@ -307,7 +331,7 @@ const DataProvider = ({ children }) => {
                 setWalletDistData(walletDistData);
 
                 setTotalMarketCap(sumMarketCap);
-
+                fetchAllProgramDetails();
                 fetchAllTokenMetaData();
                 fetchTransferDataForTokens(transferOffset, defaultSize);
 
@@ -330,7 +354,7 @@ const DataProvider = ({ children }) => {
 
     return (
 
-        <DataContext.Provider value={{ tokenMetaData, individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData, coinData, holderTopData, transferData, loadMore, loadMoreTransfers, statsData }}>
+        <DataContext.Provider value={{ tokenMetaData, individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData, coinData, holderTopData, transferData, loadMore, loadMoreTransfers, statsData, programDetailsData }}>
             {children}
         </DataContext.Provider>
     );

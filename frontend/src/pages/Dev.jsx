@@ -161,14 +161,15 @@ import TopHolderTable from '../components/Table/TopHolderTable'
 import TokenTransferTable from '../components/Table/TransferTable'
 import { fetchTokenStats } from '../api/helloMoonApi';
 const OtherComponent = () => {
-    const { tokenMetaData, holderTopData, coinData, transferData, statsData } = useContext(DataContext);
+    const { tokenMetaData, holderTopData, coinData, transferData, statsData, programDetailsData } = useContext(DataContext);
 
     useEffect(() => {
         console.log("holder wala data", holderTopData);
         console.log("coin wala data :", coinData);
         console.log("token metadata :", tokenMetaData);
         console.log("token transfer :", transferData);
-        console.log("token stats", statsData)
+        console.log("token stats", statsData.USDC)
+        console.log("program details", programDetailsData.BUSD)
     }, [holderTopData]);
 
     return (

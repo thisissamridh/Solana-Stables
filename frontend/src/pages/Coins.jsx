@@ -21,7 +21,7 @@ export default function Coins() {
 			/>
 			<div className="gap-4 w-full justify-center">
 				<DataProvider>
-					<MarketOverview className="flex-1" />
+					<MarketOverview coinName={selectedStablecoin} className="flex-1" />
 				</DataProvider>
 			</div>
 			<div className="flex flex-col md:flex-row gap-4 w-full">
