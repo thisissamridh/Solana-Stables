@@ -114,29 +114,3 @@ export default function CombinedComponent({ coinName }) {
 }
 
 
-{/* <div className="w-full h-[22rem] bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg">
-        <strong className="text-white-700 font-large text-2xl text-gradient">Profile Summary</strong>
-        <div className="mt-4 w-full flex-1 text-md">
-          <div className="p-4 text-xl font-bold flex items-center  rounded-xl w-50 ">
-            <FaIdCard className="mr-2 text-blue -500" />
-            Token Name: <p className='font-light px-2'>{formatNumber(2)}</p>
-          </div>
-          <div className="p-4 text-xl font-bold flex items-center  rounded-xl w-50 ">
-            <FaCoins className="mr-2 text-yellow -500" />
-            Token address: <p className='font-light px-2'>{formatNumber(2)}</p>
-          </div>
-          <div className="p-4 text-xl font-bold flex items-center  rounded-xl w-50 ">
-            <FaUsers className="mr-2 text-green -500" />
-            Owners Program: <p className='font-light px-2'>{formatNumber(2)}</p>
-          </div>
-          <div className="p-4 text-xl font-bold flex items-center  rounded-xl w-50 ">
-            <FaGavel className="mr-2 text-red -500" />
-            Authority: <p className='font-light px-2'>{formatNumber(2)}</p>
-          </div>
-        </div>
-      </div> */}
-
-
-//     </div>
-//   );
-// }

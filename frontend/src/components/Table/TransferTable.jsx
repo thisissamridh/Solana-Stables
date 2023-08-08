@@ -44,7 +44,7 @@ const TokenTransferTable = ({ coinName }) => {
                             <tr key={transfer._id}>
                                 <td className='text-center'>{index + 1}</td>
                                 {!coinName && <td className='text-center'>
-                                    <img src={transfer.icon} className="inline-block h-5 w-5" />
+                                    <img src={transfer.icon} className="inline-block h-5 w-5" alt='' />
                                     <span className="ml-2">{transfer.symbol}</span>
                                 </td>}
                                 <td className='text-center'>

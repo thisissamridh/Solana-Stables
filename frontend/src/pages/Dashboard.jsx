@@ -4,9 +4,9 @@ import StableCoinLineChart from '../components/Charts/MarketCapLineChart'
 import TopHolderTable from '../components/Table/TopHolderTable'
 import StableCoinPieChart from '../components/Charts/MarketCapPieChart'
 import TopHoldersSummaryTable from '../components/Table/HolderSummary'
-import { DataProvider } from '../context/DataContext';
+// import { DataProvider } from '../context/DataContext';
 import Footer from '../components/shared/Footer'
-import Header from '../components/shared/Header'
+// import Header from '../components/shared/Header'
 import TokenTransferTable from '../components/Table/TransferTable'
 import HolderChart from '../components/Charts/Holderchart'
 import Walletfunds from '../components/Charts/Walletfunds'

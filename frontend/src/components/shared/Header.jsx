@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import the Link component
-import { Menu } from '@headlessui/react';
-import { HiOutlineSearch, HiOutlineChatAlt } from 'react-icons/hi';
-import { useNavigate } from 'react-router-dom';
+// import { Menu } from '@headlessui/react';
+// import { HiOutlineSearch, HiOutlineChatAlt } from 'react-icons/hi';
+// import { useNavigate } from 'react-router-dom';
 import { FcBullish } from 'react-icons/fc';
-import Coins from '../../pages/Coins';
+// import Coins from '../../pages/Coins';
 
 export default function Header() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
 
     return (
