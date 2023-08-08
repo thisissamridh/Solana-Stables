@@ -1,5 +1,3 @@
-# _Solana Stablecoin Analytics Dashboard_
-
 # StarBoard Metrics Stablecoin Dashboard
 
 ## Overview

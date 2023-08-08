@@ -5,7 +5,7 @@ import formatNumber from '../utils/FormatNumber';
 
 export default function DashboardStatsGrid() {
   const { individualCoinMcpData, tokenMetaData } = useContext(DataContext);
-  console.log(individualCoinMcpData)
+
   const mcp = (individualCoinMcpData[individualCoinMcpData.length - 1])
   const mcp7d = (individualCoinMcpData[individualCoinMcpData.length - 8])
 

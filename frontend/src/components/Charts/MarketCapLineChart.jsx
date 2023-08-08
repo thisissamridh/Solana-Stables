@@ -59,7 +59,7 @@ import { getColor } from '../../utils/utils'; // Create a separate file for getC
 export default function StableCoinLineChart({ coinName }) {
     const { individualCoinMcpData, stablecoinsID } = useContext(DataContext);
 
-    console.log("individualCoinMcpData", individualCoinMcpData);
+
     // Filter data based on the coin name, or use all data if no coin name is provided
     const chartData = coinName
         ? individualCoinMcpData.map(entry => ({

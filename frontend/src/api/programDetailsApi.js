@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = 'https://public-api.solscan.io/account/';
-console.log(process.env.REACT_APP_SCAN);
+
 export const fetchProgramDetails = async (address) => {
     try {
         const response = await axios.get(`${BASE_URL}${address}`, {
