@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/shared/Layout';
 import LoadingIndicator from './components/Helper/LoadingIndicator';
 import { DataProvider } from './context/DataContext';
+import { Analytics } from '@vercel/analytics/react';
+
 
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 const Coins = React.lazy(() => import('./pages/Coins'));
@@ -21,6 +23,7 @@ function App() {
                         <Route path="/dev" element={<Dev />} />
                     </Route>
                 </Routes>
+            <Analytics/>
             </Router>
         </DataProvider>
     );
