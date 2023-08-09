@@ -21,7 +21,7 @@ export default function StableCoinLineChart({ coinName }) {
         <div className="w-full h-[22rem] bg-black-gradient p-4 rounded-md flex flex-col flex-1 shadow-xl">
             <strong className="text-white-700 font-bond text-gradient">Stablecoin Market Cap</strong>
             <div className="mt-3 w-full flex-1 text-xs">
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height="90%">
                     {chartData.length > 0 ? (
                         <ComposedChart data={chartData} margin={{ top: 5, right: 30, left: -10, bottom: 5 }}>
                             <defs>

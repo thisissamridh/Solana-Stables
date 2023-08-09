@@ -24,7 +24,7 @@ export default function Coins() {
 					<MarketOverview coinName={selectedStablecoin} className="flex-1" />
 				</DataProvider>
 			</div>
-			<div className="flex flex-col md:flex-row gap-4 w-full">
+			<div className="flex flex-col lg:flex-row md:flex-row gap-4 w-full">
 				<StableCoinLineChart coinName={selectedStablecoin} />
 			</div>
 

@@ -12,8 +12,7 @@ const ChartLoader = () => {
                 <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
                 <div className="w-full h-64 bg-gray-200 rounded-t-lg dark:bg-gray-700"></div>
                 <div className="w-full bg-gray-200 rounded-t-lg h-80 dark:bg-gray-700"></div>
-                <div className="w-full bg-gray-200 rounded-t-lg h-72 dark:bg-gray-700"></div>
-                <div className="w-full bg-gray-200 rounded-t-lg h-80 dark:bg-gray-700"></div>
+
             </div>
             <span className="sr-only">Loading...</span>
         </div>
