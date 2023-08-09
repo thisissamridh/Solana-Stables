@@ -35,6 +35,8 @@ export default function CombinedComponent({ coinName }) {
     stats = statsData[coinName].data[0] ?? {};
   }
 
+
+
   function formatSupply(supply, decimals) {
     if (supply === undefined || decimals === undefined) return 'N/A';
 
@@ -45,36 +47,36 @@ export default function CombinedComponent({ coinName }) {
   return (
     <div className="flex flex-col md:flex-row gap-4">
       <div className="w-full h-[22rem] bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg">
-        <strong className="text-white-700 font-large text-2xl text-gradient">Market Overview</strong>
+        <strong className="text-white-700 font-large text-2xl lg:text-2xl md:text-xl sm:text-lg text-gradient">Market Overview</strong>
         <div className="mt-4 w-full flex-1 text-md">
-          <div className="p-4 text-xl font-bold flex items-center  rounded-xl w-50 ">
-            <FaChartPie className="mr-2 text-gradient " />
+          <div className="p-4  lg:text-xl md:text-lg text-md font-bold flex items-center rounded-xl w-50">
+            <FaChartPie className="mr-2 text-gradient" />
             Market Cap: <p className='font-light px-2'>{formatNumber(marketcap)}</p>
           </div>
-          <div className="py-4 px-4 text-xl font-bold flex items-center  rounded-xl  ">
-            <FaCoins className="mr-2 " />
-            Max Supply (FDMC): <p className='font-light px-2'>{formatSupply(programDetails?.tokenInfo?.supply, programDetails?.tokenInfo?.decimals)}</p>
-
+          <div className="py-4 px-4  lg:text-xl md:text-lg text-md font-bold flex items-center rounded-xl">
+            <FaCoins className="mr-2 text-gradient" />
+            Max Supply: <p className='font-light px-2'>{formatSupply(programDetails?.tokenInfo?.supply, programDetails?.tokenInfo?.decimals)}</p>
           </div>
-          <div className="p-4 text-xl font-bold flex items-center ">
-            <FaUsers className="mr-2 " />
+          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center">
+            <FaUsers className="mr-2" />
             Total Holder: <p className='font-light px-2'>{coinMetadata?.data?.holder ?? 'N/A'}</p>
           </div>
-          <div className="p-4 text-xl font-bold flex items-center  ">
+          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center">
             <FaVolumeUp className="mr-2 text-red -500" />
             Volume: <p className='font-light px-2'>{formatNumber(stats?.volume ?? 'N/A')}</p>
           </div>
         </div>
       </div>
 
+
       <div className="w-full h-[22rem] bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg">
-        <strong className="text-white-700 font-large text-2xl text-gradient">Profile Summary</strong>
+        <strong className="text-white-700 font-large text-2xl lg:text-2xl md:text-xl sm:text-lg text-gradient">Profile Summary</strong>
         <div className="mt-4 w-full flex-1 text-md">
-          <div className="p-4 text-xl font-bold flex items-center  rounded-xl w-50 ">
-            <FaIdCard className="mr-2 text-blue -500" />
+          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
+            <FaIdCard className="mr-2 text-blue-500" />
             Token Name: <p className='font-light px-2'>{coinMetadata?.data?.name ?? 'N/A'}</p>
           </div>
-          <div className="p-4 text-xl font-bold flex items-center rounded-xl w-50 ">
+          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
             <FaCoins className="mr-2 text-yellow-500" />
             Token address:
             <a
@@ -82,10 +84,10 @@ export default function CombinedComponent({ coinName }) {
               target="_blank"
               rel="noopener noreferrer"
               className='font-light px-2'>
-              {truncateString(coinMetadata?.data?.address ?? 'N/A', 27)}
+              {truncateString(coinMetadata?.data?.address ?? 'N/A', 20)}
             </a>
           </div>
-          <div className="p-4 text-xl font-bold flex items-center rounded-xl w-50 ">
+          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
             <FaUsers className="mr-2 text-green-500" />
             Owners Program:
             <a
@@ -93,10 +95,10 @@ export default function CombinedComponent({ coinName }) {
               target="_blank"
               rel="noopener noreferrer"
               className='font-light px-2'>
-              {truncateString(programDetails?.ownerProgram ?? 'N/A', 27)}
+              {truncateString(programDetails?.ownerProgram ?? 'N/A', 20)}
             </a>
           </div>
-          <div className="p-4 text-xl font-bold flex items-center rounded-xl w-50 ">
+          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
             <FaGavel className="mr-2 text-red-500" />
             Authority:
             <a
@@ -104,7 +106,7 @@ export default function CombinedComponent({ coinName }) {
               target="_blank"
               rel="noopener noreferrer"
               className='font-light px-2'>
-              {truncateString(programDetails?.tokenInfo?.tokenAuthority ?? 'N/A', 27)}
+              {truncateString(programDetails?.tokenInfo?.tokenAuthority ?? 'N/A', 20)}
             </a>
           </div>
         </div>

@@ -3,10 +3,11 @@ import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 import formatNumber from '../../utils/FormatNumber';
 // import { getColor } from '../../utils/utils';
 import { DataContext } from '../../context/DataContext';
-
+import ChartLoader from '../Helper/ChartLoader';
 export default function Walletfunds({ coinName }) {
 
     const [chartData, setChartData] = useState([]);
+    // const [loading, setLoading] = useState(true);
 
     const { walletDistData } = useContext(DataContext);
 
@@ -41,9 +42,12 @@ export default function Walletfunds({ coinName }) {
 
 
         setChartData(Object.values(formattedData));
+        // setLoading(false);
     }, [walletDistData, coinName]);
 
-
+    // if (loading) {
+    //     return <ChartLoader />;  // Using the ChartLoader when loading
+    // }
 
 
     const renderChartComponents = () => {
@@ -64,34 +68,38 @@ export default function Walletfunds({ coinName }) {
             <strong className="text-white-700 font-bold text-lg text-gradient">Wallet fund's Distribution</strong>
             <div className="text-sm text-neutral-300">Token holding distribution by values ($)</div>
             <div className="mt-3 w-full flex-1 text-xs">
-                <ResponsiveContainer width="100%" height="100%">
-                    <ComposedChart data={chartData} margin={{ top: 5, right: 30, left: -10, bottom: 5 }}>
-                        <XAxis dataKey="label" tick={{ fill: '#ffffff', fontSize: 12, fontWeight: 'bold', textTransform: 'uppercase' }} />
+                <ResponsiveContainer width="100%" height="90%">
+                    {chartData.length > 0 ? (
+                        <ComposedChart data={chartData} margin={{ top: 5, right: 30, left: -10, bottom: 5 }}>
+                            <XAxis dataKey="label" tick={{ fill: '#ffffff', fontSize: 12, fontWeight: 'bold', textTransform: 'uppercase' }} />
 
 
-                        <YAxis tickFormatter={formatNumber} yAxisId="left" />
-                        <YAxis tickFormatter={formatNumber} orientation='right' yAxisId="right" />
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <Tooltip
-                            content={({ payload, label, active }) => {
-                                if (active && payload && payload.length) {
-                                    return (
-                                        <div className="custom-tooltip" style={{ backgroundColor: '#FFFFFF', padding: '10px', borderRadius: '5px' }}>
-                                            <p className="label text-black font-bold">{`${label}`}</p>
-                                            <p className="intro text-green-500">{`Total Number: ${payload[0].value}`}</p>
-                                            {payload[1] && <p className="desc text-orange-400">{`Total Percentage: ${payload[1].value}`}</p>}
-                                        </div>
-                                    );
-                                }
+                            <YAxis tickFormatter={formatNumber} yAxisId="left" />
+                            <YAxis tickFormatter={formatNumber} orientation='right' yAxisId="right" />
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <Tooltip
+                                content={({ payload, label, active }) => {
+                                    if (active && payload && payload.length) {
+                                        return (
+                                            <div className="custom-tooltip" style={{ backgroundColor: '#FFFFFF', padding: '10px', borderRadius: '5px' }}>
+                                                <p className="label text-black font-bold">{`${label}`}</p>
+                                                <p className="intro text-green-500">{`Total Number: ${payload[0].value}`}</p>
+                                                {payload[1] && <p className="desc text-orange-400">{`Total Percentage: ${payload[1].value}`}</p>}
+                                            </div>
+                                        );
+                                    }
 
-                                return null;
-                            }}
-                        />
+                                    return null;
+                                }}
+                            />
 
 
-                        <Legend />
-                        {renderChartComponents()}
-                    </ComposedChart>
+                            <Legend />
+                            {renderChartComponents()}
+                        </ComposedChart>
+                    ) : (
+                        <div><ChartLoader /></div>
+                    )}
 
                 </ResponsiveContainer>
             </div>
