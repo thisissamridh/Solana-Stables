@@ -52,26 +52,27 @@ export default function DashboardStatsGrid() {
         <div className="rounded-full h-8 md:h-12 w-8 md:w-12 flex items-center justify-center">
           <IoWalletSharp className="text-2xl" />
         </div>
-        <div className="pl-2 md:pl-4">
+        <div className="flex flex-col items-center md:items-start pl-2 md:pl-4 w-full"> {/* Added flex utilities here */}
           <span className="text-xs md:text-sm text-gradient font-normal">Total MarketCap</span>
-          <div className="flex items-center">
+          <div className="flex items-center justify-center md:justify-start w-full"> {/* Added justify-center for mobile */}
             <strong className="text-lg md:text-xl text-green-500 font-semibold">${formatNumber(sum)}</strong>
           </div>
         </div>
       </BoxWrapper>
 
+
+
       <BoxWrapper>
         <div className="rounded-full h-8 md:h-12 w-8 md:w-12 flex items-center justify-center">
           <IoStatsChartSharp className="text-2xl" />
         </div>
-        <div className="pl-2 md:pl-4">
+        <div className="flex flex-col items-center md:items-start pl-2 md:pl-4 w-full">
           <span className="text-xs md:text-sm text-gradient font-normal">MarketCap Change 7D</span>
-          <div className="flex items-center">
+          <div className="flex items-center justify-center md:justify-start w-full">
             <strong className={`text-lg md:text-xl font-semibold ${percentageChange7d < 0 ? 'text-red-500' : 'text-green-500'}`}>
               {percentageChange7d.toFixed(2)}%
             </strong>
           </div>
-
         </div>
       </BoxWrapper>
 
@@ -79,9 +80,9 @@ export default function DashboardStatsGrid() {
         <div className="rounded-full h-8 md:h-12 w-8 md:w-12 flex items-center justify-center">
           <IoTrendingDownSharp className="text-2xl" />
         </div>
-        <div className="pl-2 md:pl-4">
+        <div className="flex flex-col items-center md:items-start pl-2 md:pl-4 w-full">
           <span className="text-xs md:text-sm text-gradient font-normal">Total StableCoin Holders</span>
-          <div className="flex items-center">
+          <div className="flex items-center justify-center md:justify-start w-full">
             <strong className="text-lg md:text-xl text-green-500 font-semibold">{totalHolders}</strong>
           </div>
         </div>
@@ -91,14 +92,13 @@ export default function DashboardStatsGrid() {
         <div className="rounded-full h-8 md:h-12 w-8 md:w-12 flex items-center justify-center">
           <IoLogoUsd className="text-2xl" />
         </div>
-        <div className="pl-2 md:pl-4">
+        <div className="flex flex-col items-center md:items-start pl-2 md:pl-4 w-full">
           <span className="text-xs md:text-sm text-gradient font-normal">USDT Dominance</span>
-          <div className="flex items-center">
+          <div className="flex items-center justify-center md:justify-start w-full">
             <strong className="text-lg md:text-xl text-green-500 font-semibold">{usdtDominance.toFixed(2)}%</strong>
           </div>
         </div>
       </BoxWrapper>
-
     </div>
   );
 

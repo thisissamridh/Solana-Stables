@@ -8,7 +8,9 @@ import { fetchTransferData } from '../api/tokenTransferApi';
 import { fetchTopHolders } from '../api/topHoldersApi';
 import { fetchStats } from '../api/helloMoonApi';
 import { fetchProgramDetails } from '../api/programDetailsApi';
+import { fetchAmmData } from '../api/ammApi';
 import CoinId from '../utils/coinId';
+
 import stablecoinAddressMapping from '../utils/CoinAddress';
 const DataContext = createContext();
 
