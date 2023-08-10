@@ -77,7 +77,7 @@ function Footer() {
                     href="https://github.com/thisissamridh/StarBoard-Metrics"
                     className="ml-2 text-neutral-300 hover:text-white px-3 py-2 rounded-md hover:underline"
                 >
-                    StarBoard on GitHub
+                    Solana Stables on GitHub
                 </a>
             </div>
         </footer>

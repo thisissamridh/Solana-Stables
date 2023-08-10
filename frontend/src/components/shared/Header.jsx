@@ -15,7 +15,7 @@ export default function Header() {
             <div className="flex items-center gap-2">
                 <FcBullish fontSize={34} />
                 <div>
-                    <span className="text-neutral-200 text-lg text-gradient font-bold">StarBoard</span>
+                    <span className="text-neutral-200 text-lg text-gradient font-bold">Solana Stables</span>
                     <div className="text-xs text-neutral-300">Solana Stable Coin Analytics</div>
                 </div>
             </div>
