@@ -81,7 +81,7 @@ export default function DashboardStatsGrid() {
           <IoTrendingDownSharp className="text-2xl" />
         </div>
         <div className="flex flex-col items-center md:items-start pl-2 md:pl-4 w-full">
-          <span className="text-xs md:text-sm text-gradient font-normal">Total StableCoin Holders</span>
+          <span className="text-xs md:text-sm text-gradient font-normal">Total Stablecoin Holders</span>
           <div className="flex items-center justify-center md:justify-start w-full">
             <strong className="text-lg md:text-xl text-green-500 font-semibold">{totalHolders}</strong>
           </div>

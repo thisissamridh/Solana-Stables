@@ -29,9 +29,31 @@ const DataProvider = ({ children }) => {
     const [offset, setOffset] = useState(0);
     const [tokenMetaData, setTokenMetaData] = useState({});
     const [programDetailsData, setProgramDetailsData] = useState({});
+    const [ammDataObj, setAmmData] = useState({});
     // const defaultOffset = 0;
     const defaultSize = 20;
 
+
+
+    const fetchAmmDataForTokens = async () => {
+        try {
+            const ammDataPromises = Object.entries(stablecoinAddressMapping).map(([coinName, addresses]) => {
+                const address = Array.isArray(addresses) ? addresses[0] : addresses;
+                return fetchAmmData(address);
+            });
+
+            const ammDataResults = await Promise.all(ammDataPromises);
+
+            const ammDataObj = {};
+            Object.keys(stablecoinAddressMapping).forEach((coinName, index) => {
+                ammDataObj[coinName] = ammDataResults[index];
+            });
+
+            setAmmData(ammDataObj);
+        } catch (error) {
+            console.error('Error fetching AMM data:', error);
+        }
+    };
 
 
     const fetchAllProgramDetails = async () => {
@@ -336,7 +358,7 @@ const DataProvider = ({ children }) => {
                 fetchAllProgramDetails();
                 fetchAllTokenMetaData();
                 fetchTransferDataForTokens(transferOffset, defaultSize);
-
+                fetchAmmDataForTokens();
 
                 Object.keys(stablecoinAddressMapping).forEach(coinName => {
                     fetchTopHolderData(coinName, offset, defaultSize);
@@ -356,7 +378,7 @@ const DataProvider = ({ children }) => {
 
     return (
 
-        <DataContext.Provider value={{ tokenMetaData, individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData, coinData, holderTopData, transferData, loadMore, loadMoreTransfers, statsData, programDetailsData }}>
+        <DataContext.Provider value={{ tokenMetaData, individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData, coinData, holderTopData, transferData, loadMore, loadMoreTransfers, statsData, programDetailsData, ammDataObj }}>
             {children}
         </DataContext.Provider>
     );

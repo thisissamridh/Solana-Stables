@@ -38,47 +38,47 @@ const TopHoldersSummaryTable = () => {
   return (
     <div className="bg-black-gradient px-4 pt-3 pb-4 rounded-md flex-1 shadow-xl scrollbar-hide">
       <strong className="text-white-700 font-bold text-gradient">Top Holders of Each Stablecoin</strong>
-      <div className="overflow-x-auto overflow-y-auto h-64 rounded-sm mt-3">
-        <table className="w-full text-white-700">
-          <thead className='bg-black-gradient'>
-            <tr>
-              <th className='text-center'>Coin</th>
-              <th className='text-center'>Symbol</th>
-              <th className='text-center'>Address</th>
-              <th className='text-center'>Owner</th>
-              <th className='text-center'>Quantity</th>
-              <th className='text-center'>Total Holders</th> {/* New column header */}
-            </tr>
-          </thead>
-          <tbody>
-            {topHolders.map((holder) => {
-              // console.log("Metadata for", holder.coinName, ":", tokenMetaData[holder.coinName]);
-              return (
-                <tr key={holder.address}>
-                  <td className='text-center'>{holder.coinName}</td>
-                  <td className='text-center'>
-                    <img src={tokenMetaData[holder.coinName]?.data?.icon} alt={holder.coinName} className="inline-block h-5 w-5" />
-
-                  </td>
-                  <td className='text-center'>
-                    <Link to={`https://solscan.io/account/${holder.address}`} target="_blank" rel="noopener noreferrer">
-                      {getAddressName(holder.address)}
-                    </Link>
-                  </td>
-                  <td className='text-center'>
-                    <Link to={`https://solscan.io/account/${holder.owner}`} target="_blank" rel="noopener noreferrer">
-                      {getAddressName(holder.owner)}
-                    </Link>
-                  </td>
-                  <td className='text-center'>{holder.amount / Math.pow(10, holder.decimals)}</td>
-                  <td className='text-center'>
-                    {tokenMetaData[holder.coinName]?.data?.holder} {/* Display the holder count from tokenMetaData */}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div className="overflow-x-auto mt-3">
+        <div className="overflow-y-auto h-56 rounded-sm"> {/* Apply overflow and height to this div */}
+          <table className="w-full text-white-700">
+            <thead className='bg-black-gradient'>
+              <tr>
+                <th className='text-center'>Coin</th>
+                <th className='text-center'>Symbol</th>
+                <th className='text-center'>Address</th>
+                <th className='text-center'>Owner</th>
+                <th className='text-center'>Quantity</th>
+                <th className='text-center'>Total Holders</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topHolders.map((holder) => {
+                return (
+                  <tr key={holder.address}>
+                    <td className='text-center'>{holder.coinName}</td>
+                    <td className='text-center'>
+                      <img src={tokenMetaData[holder.coinName]?.data?.icon} alt={holder.coinName} className="inline-block h-5 w-5" />
+                    </td>
+                    <td className='text-center'>
+                      <Link to={`https://solscan.io/account/${holder.address}`} target="_blank" rel="noopener noreferrer">
+                        {getAddressName(holder.address)}
+                      </Link>
+                    </td>
+                    <td className='text-center'>
+                      <Link to={`https://solscan.io/account/${holder.owner}`} target="_blank" rel="noopener noreferrer">
+                        {getAddressName(holder.owner)}
+                      </Link>
+                    </td>
+                    <td className='text-center'>{holder.amount / Math.pow(10, holder.decimals)}</td>
+                    <td className='text-center'>
+                      {tokenMetaData[holder.coinName]?.data?.holder}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

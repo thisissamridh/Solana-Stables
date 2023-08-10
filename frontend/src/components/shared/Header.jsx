@@ -38,7 +38,7 @@ export default function Header() {
                     </svg>
                 </button>
                 {isOpen && (
-                    <div className="absolute top-16 right-0 bg-white rounded-md shadow-md p-2 bg-black-gradient">
+                    <div className="absolute top-16 right-0 bg-white rounded-md shadow-md p-2 bg-black-gradient z-50">
                         <Link
                             to="/"
                             className="block py-1 px-2 text-neutral-300 hover:text-white focus:outline-none"
@@ -51,7 +51,7 @@ export default function Header() {
                             className="block py-1 px-2 text-neutral-300 hover:text-bla focus:outline-none"
                             onClick={() => setIsOpen(false)}
                         >
-                            Coin Analytics
+                            Stablecoin Analytics
                         </Link>
                     </div>
                 )}
@@ -68,7 +68,7 @@ export default function Header() {
                     to="/Coins"
                     className="text-neutral-300 hover:text-white focus-visible:selection: px-3 py-2 rounded-md  bg-black-gradient"
                 >
-                    Coin Analytics
+                    Stablecoin Analytics
                 </Link>
             </div>
         </div>

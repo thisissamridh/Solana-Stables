@@ -155,33 +155,30 @@
 // // export default WalletDistDataDisplay;
 
 
-// import React, { useContext, useEffect } from 'react';
-// import { DataContext } from '../context/DataContext';  // Make sure to adjust the path based on your project structure
-// // import TopHolderTable from '../components/Table/TopHolderTable'
-// import TokenTransferTable from '../components/Table/TransferTable'
-// // import { fetchTokenStats } from '../api/helloMoonApi';
-// const OtherComponent = () => {
-//     const { tokenMetaData, holderTopData, coinData, transferData, statsData, programDetailsData } = useContext(DataContext);
+import React, { useContext, useEffect } from 'react';
+import { DataContext } from '../context/DataContext';  // Make sure to adjust the path based on your project structure
+// import TopHolderTable from '../components/Table/TopHolderTable'
+import TokenTransferTable from '../components/Table/TransferTable'
+// import { fetchTokenStats } from '../api/helloMoonApi';
+const OtherComponent = () => {
+    const { tokenMetaData, holderTopData, coinData, transferData, statsData, programDetailsData, ammData } = useContext(DataContext);
 
-//     useEffect(() => {
-//         console.log("holder wala data", holderTopData);
-//         console.log("coin wala data :", coinData);
-//         console.log("token metadata :", tokenMetaData);
-//         console.log("token transfer :", transferData);
-//         console.log("token stats", statsData.USDC)
-//         console.log("program details", programDetailsData.BUSD)
-//     }, [holderTopData]);
+    useEffect(() => {
+        console.log("holder wala data", holderTopData);
+        console.log('ammData', ammData)
 
-//     return (
-//         <div>
-//             {/*  */}
+    }, [holderTopData]);
 
-//             {/* <TopHolderTable coinName={"USDT"} /> */}
-//             <TokenTransferTable coinName={"USDT"} />
-//             <TokenTransferTable />
-//         </div>
-//     );
-//     // ... your component rendering
-// };
+    return (
+        <div>
+            {/*  */}
 
-// export default OtherComponent;
+            {/* <TopHolderTable coinName={"USDT"} /> */}
+            <TokenTransferTable coinName={"USDT"} />
+            <TokenTransferTable />
+        </div>
+    );
+    // ... your component rendering
+};
+
+export default OtherComponent;
