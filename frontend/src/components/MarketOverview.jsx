@@ -46,72 +46,72 @@ export default function CombinedComponent({ coinName }) {
   }
   return (
     <div className="flex flex-col md:flex-row gap-4">
-      <div className="w-full h-[22rem] bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg">
-        <strong className="text-white-700 font-large text-2xl lg:text-2xl md:text-xl sm:text-lg text-gradient">Market Overview</strong>
-        <div className="mt-4 w-full flex-1 text-md">
-          <div className="p-4  lg:text-xl md:text-lg text-md font-bold flex items-center rounded-xl w-50">
-            <FaChartPie className="mr-2 text-gradient" />
-            Market Cap: <p className='font-light px-2'>{formatNumber(marketcap)}</p>
-          </div>
-          <div className="py-4 px-4  lg:text-xl md:text-lg text-md font-bold flex items-center rounded-xl">
-            <FaCoins className="mr-2 text-gradient" />
-            Max Supply: <p className='font-light px-2'>{formatSupply(programDetails?.tokenInfo?.supply, programDetails?.tokenInfo?.decimals)}</p>
-          </div>
-          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center">
-            <FaUsers className="mr-2" />
-            Total Holder: <p className='font-light px-2'>{coinMetadata?.data?.holder ?? 'N/A'}</p>
-          </div>
-          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center">
-            <FaVolumeUp className="mr-2 text-red -500" />
-            Volume: <p className='font-light px-2'>{formatNumber(stats?.volume ?? 'N/A')}</p>
-          </div>
+    <div className="w-full h-[22rem] bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg">
+      <strong className="text-white-700 font-large text-2xl lg:text-2xl md:text-xl sm:text-lg text-gradient">Market Overview</strong>
+      <div className="mt-4 w-full flex-1 text-md">
+        <div className="p-4 lg:text-xl md:text-lg text-md font-bold flex items-center rounded-xl w-50">
+          <FaChartPie className="mr-2 text-gradient" />
+          Market Cap: <p className='font-light px-2'>{formatNumber(marketcap)}</p>
         </div>
-      </div>
-
-
-      <div className="w-full h-[22rem] bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg">
-        <strong className="text-white-700 font-large text-2xl lg:text-2xl md:text-xl sm:text-lg text-gradient">Profile Summary</strong>
-        <div className="mt-4 w-full flex-1 text-md">
-          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
-            <FaIdCard className="mr-2 text-blue-500" />
-            Token Name: <p className='font-light px-2'>{coinMetadata?.data?.name ?? 'N/A'}</p>
-          </div>
-          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
-            <FaCoins className="mr-2 text-yellow-500" />
-            Token address:
-            <a
-              href={`https://solscan.io/account/${coinMetadata?.data?.address}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className='font-light px-2'>
-              {truncateString(coinMetadata?.data?.address ?? 'N/A', 20)}
-            </a>
-          </div>
-          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
-            <FaUsers className="mr-2 text-green-500" />
-            Owners Program:
-            <a
-              href={`https://solscan.io/account/${programDetails?.ownerProgram}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className='font-light px-2'>
-              {truncateString(programDetails?.ownerProgram ?? 'N/A', 20)}
-            </a>
-          </div>
-          <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
-            <FaGavel className="mr-2 text-red-500" />
-            Authority:
-            <a
-              href={`https://solscan.io/account/${programDetails?.tokenInfo?.tokenAuthority}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className='font-light px-2'>
-              {truncateString(programDetails?.tokenInfo?.tokenAuthority ?? 'N/A', 20)}
-            </a>
-          </div>
+        <div className="py-4 px-4 lg:text-xl md:text-lg text-md font-bold flex items-center rounded-xl">
+          <FaCoins className="mr-2 " />
+          Max Supply: <p className='font-light px-1.5'>{formatSupply(programDetails?.tokenInfo?.supply, programDetails?.tokenInfo?.decimals)}</p>
+        </div>
+        <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center">
+          <FaUsers className="mr-2" />
+          Total Holder: <p className='font-light px-2'>{coinMetadata?.data?.holder ?? 'N/A'}</p>
+        </div>
+        <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center">
+          <FaVolumeUp className="mr-2 text-red -500" />
+          Volume: <p className='font-light px-2'>{formatNumber(stats?.volume ?? 'N/A')}</p>
         </div>
       </div>
     </div>
+  
+    <div className="w-full h-[22rem] bg-black-gradient p-4 flex flex-col shadow-xl rounded-lg">
+      <strong className="text-white-700 font-large text-2xl lg:text-2xl text-gradient">Profile Summary</strong>
+      <div className="mt-3 w-full flex-1 text-md">
+        <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
+          <FaIdCard className="mr-2 " />
+          Token Name: <p className='font-light px-2'>{coinMetadata?.data?.name ?? 'N/A'}</p>
+        </div>
+        <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-sm font-bold flex items-center rounded-xl w-50">         
+         <FaCoins className="mr-2" />
+          Token address:    
+          <a
+            href={`https://solscan.io/account/${coinMetadata?.data?.address}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className='font-light px-2 '>
+            {truncateString(coinMetadata?.data?.address ?? 'N/A', 15)}
+          </a>
+        </div>
+        <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
+          <FaUsers className="mr-2 " />
+          Owners Program:
+          <a
+            href={`https://solscan.io/account/${programDetails?.ownerProgram}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className='font-light px-2'>
+            {truncateString(programDetails?.ownerProgram ?? 'N/A', 15)}
+          </a>
+        </div>
+        <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
+          <FaGavel className="mr-2 " />
+          Authority:
+          <a
+            href={`https://solscan.io/account/${programDetails?.tokenInfo?.tokenAuthority}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className='font-light px-2'>
+            {truncateString(programDetails?.tokenInfo?.tokenAuthority ?? 'N/A', 15)}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div> 
+  
   );
 }
 
