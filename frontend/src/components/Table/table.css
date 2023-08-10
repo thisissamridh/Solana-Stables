@@ -1,0 +1,6 @@
+.sticky-header th {
+  position: sticky;
+  top: 0;
+  background-color: #000; /* Adjust this to the color you desire for the header */
+  z-index: 10;
+}

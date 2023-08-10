@@ -43,12 +43,12 @@ const TopHoldersSummaryTable = () => {
           <table className="w-full text-white-700">
             <thead className='bg-black-gradient'>
               <tr>
-                <th className='text-center'>Coin</th>
-                <th className='text-center'>Symbol</th>
-                <th className='text-center'>Address</th>
-                <th className='text-center'>Owner</th>
-                <th className='text-center'>Quantity</th>
-                <th className='text-center'>Total Holders</th>
+                <th className='text-center sticky top-0 bg-black z-10'>Coin</th>
+                <th className='text-center sticky top-0 bg-black z-10'>Symbol</th>
+                <th className='text-center sticky top-0 bg-black z-10'>Address</th>
+                <th className='text-center sticky top-0 bg-black z-10'>Owner</th>
+                <th className='text-center sticky top-0 bg-black z-10'>Quantity</th>
+                <th className='text-center sticky top-0 bg-black z-10'>Total Holders</th>
               </tr>
             </thead>
             <tbody>

@@ -30,13 +30,13 @@ const TokenTransferTable = ({ coinName }) => {
                 <table className="w-full text-white-700">
                     <thead className='bg-black-gradient '>
                         <tr>
-                            <th className='text-center'>S.No</th>
-                            {!coinName && <th className='text-center'>Coin Name</th>}
-                            <th className='text-center'>Transaction Signature</th>
-                            <th className='text-center'>Source Token Account</th>
-                            <th className='text-center'>Destination Token Account</th>
-                            <th className='text-center'>Amount</th>
-                            <th className='text-center'>Creation Time (UTC)</th>
+                            <th className='text-center sticky top-0 bg-black z-10'>S.No</th>
+                            {!coinName && <th className='text-center sticky top-0 bg-black z-10'>Coin Name</th>}
+                            <th className='text-center sticky top-0 bg-black z-10'>Transaction Signature</th>
+                            <th className='text-center sticky top-0 bg-black z-10'>Source Token Account</th>
+                            <th className='text-center sticky top-0 bg-black z-10'>Destination Token Account</th>
+                            <th className='text-center sticky top-0 bg-black z-10'>Amount</th>
+                            <th className='text-center sticky top-0 bg-black z-10'>Creation Time (UTC)</th>
                         </tr>
                     </thead>
                     <tbody>

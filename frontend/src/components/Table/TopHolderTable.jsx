@@ -2,6 +2,7 @@ import React, { useContext, useRef } from 'react'; // added useRef import
 import { Link } from 'react-router-dom';
 import { DataContext } from '../../context/DataContext'; // replace with the correct path to your DataContext
 import addressData from './addressData.json';
+import './table.css';
 const TopHolderTable = ({ coinName }) => {
     const { holderTopData, loadMore } = useContext(DataContext);
     const recentOrderData = holderTopData[coinName]?.data?.result;
@@ -24,10 +25,10 @@ const TopHolderTable = ({ coinName }) => {
                 <table className="w-full text-white-700">
                     <thead className='bg-black-gradient '>
                         <tr>
-                            <th className='text-center'>Rank</th>
-                            <th className='text-center'>Address</th>
-                            <th className='text-center'>Owner</th>
-                            <th className='text-center'>Quantity</th>
+                            <th className='text-center sticky top-0 bg-black z-10  '>Rank</th>
+                            <th className='text-center sticky top-0 bg-black z-10'>Address</th>
+                            <th className='text-center sticky top-0 bg-black z-10'>Owner</th>
+                            <th className='text-center sticky top-0 bg-black z-10'>Quantity</th>
                         </tr>
                     </thead>
                     <tbody>
