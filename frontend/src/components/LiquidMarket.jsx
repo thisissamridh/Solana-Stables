@@ -2,25 +2,16 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 
 const recentData = [
+
   {
     id: '1',
-    Exchange: 'Binance',
-    Pair: 'BTC/USDT',
-    Price: '$38,500',
-    TVL: '$10.2M',
-    'TVLs': '0.1713',
-    'Volume-24h': '$5.6M',
-    'Last Trade': '2023-07-28 12:34:56',
-  },
-  {
-    id: '2',
-    Exchange: 'Coinbase Pro',
-    Pair: 'ETH/USD',
-    Price: '$2,400',
-    TVL: '$8.3M',
-    'TVLs': '0.0513',
-    'Volume-24h': '$3.2M',
-    'Last Trade': '2023-07-28 11:45:23',
+    Exchange: 'Coming soon',
+    Pair: 'Coming soon',
+    Price: 'Coming soon',
+    TVL: 'Coming soon',
+    'TVLs': 'Coming soon',
+    'Volume-24h': 'Coming soon',
+    'Last Trade': 'Coming soon',
   },
   // Add more data here...
 ];
