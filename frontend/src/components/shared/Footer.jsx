@@ -52,7 +52,7 @@ function Footer() {
     return (
         <footer className="px-4 py-4 flex flex-col md:flex-row items-center justify-between scrollbar-hide bg-black-gradient">
             <div className="text-center md:text-left mb-4 md:mb-0">
-                <span className="text-neutral-200 text-lg text-gradient font-bold">StarBoard</span>
+                <span className="text-neutral-200 text-lg text-gradient font-bold">Solana Stables</span>
                 <p className="text-neutral-300 text-sm mt-2">
                     The best open-sourced Stablecoin analytics platform.
                 </p>
