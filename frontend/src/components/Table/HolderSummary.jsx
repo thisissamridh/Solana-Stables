@@ -57,7 +57,11 @@ const TopHoldersSummaryTable = () => {
                   <tr key={holder.address}>
                     <td className='text-center'>{holder.coinName}</td>
                     <td className='text-center'>
-                      <img src={tokenMetaData[holder.coinName]?.data?.icon} alt={holder.coinName} className="inline-block h-5 w-5" />
+                      <img
+                        src={`${process.env.PUBLIC_URL}/assets/logos/${holder.coinName}.png`}
+                        alt={holder.coinName}
+                        className="inline-block h-5 w-5"
+                      />
                     </td>
                     <td className='text-center'>
                       <Link to={`https://solscan.io/account/${holder.address}`} target="_blank" rel="noopener noreferrer">
