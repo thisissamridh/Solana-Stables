@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 const Name = ({ selectedStablecoin, onSelectStablecoin }) => {
     const [showDropdown, setShowDropdown] = useState(false);
 
-    const stablecoins = ['USDT', 'USDC', 'PAI', 'UXD', 'USDH', 'USDR', 'DAI', 'USH', 'CUSD', 'USTC', 'BUSD', 'FRAX', 'MAI', 'AGEUR', 'USDK', 'CEUR', 'CUSD', 'HUSD']; // other coin names
+    const stablecoins = ['USDT', 'USDC', 'PAI', 'UXD', 'USDH', 'USDR', 'DAI', 'USH', 'CUSD', 'BUSD', 'FRAX', 'MAI', 'AGEUR', 'USDK', 'CEUR', 'CUSD_98', 'HUSD']; // other coin names
 
     const handleStablecoinSelect = (stablecoin) => {
         onSelectStablecoin(stablecoin);

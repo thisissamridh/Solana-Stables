@@ -16,7 +16,7 @@ const CoinId = [
   { id: 55, name: 'AGEUR' },
   { id: 27, name: 'USDK' },
   { id: 52, name: 'CEUR' },
-  { id: 96, name: 'CUSD' },
+  { id: 96, name: 'CUSD_98' },
   { id: 17, name: 'HUSD' },
 ];
 

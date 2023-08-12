@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { DataContext } from '../context/DataContext';
 import formatNumber from '../utils/FormatNumber';
 import { FaChartPie, FaCoins, FaUsers, FaVolumeUp, FaIdCard, FaGavel } from 'react-icons/fa';
-
+import CoinMeta from '../utils/Coinmeta';
 export default function CombinedComponent({ coinName }) {
   const { individualCoinMcpData, statsData, programDetailsData, tokenMetaData } = useContext(DataContext);
 
@@ -10,7 +10,12 @@ export default function CombinedComponent({ coinName }) {
   let coinMetadata = null;
   let programDetails = null;
   let stats = null;
+  let tokenAddress = null;
+  let tokenAuthority = null;
+  let supply = null;
+  let decimals = null;
 
+  let ownerProgram = null;
   function truncateString(str, num) {
     if (str.length <= num) {
       return str;
@@ -35,7 +40,11 @@ export default function CombinedComponent({ coinName }) {
     stats = statsData[coinName].data[0] ?? {};
   }
 
-
+  tokenAuthority = CoinMeta[coinName]?.tokenAuthority ?? 'N/A';
+  tokenAddress = CoinMeta[coinName]?.address ?? 'N/A';
+  ownerProgram = CoinMeta[coinName]?.OwnerProgram ?? 'N/A';
+  supply = CoinMeta[coinName]?.supply ?? 'N/A';
+  decimals = CoinMeta[coinName]?.decimals ?? 'N/A';
 
   function formatSupply(supply, decimals) {
     if (supply === undefined || decimals === undefined) return 'N/A';
@@ -55,7 +64,7 @@ export default function CombinedComponent({ coinName }) {
           </div>
           <div className="py-4 px-4 lg:text-xl md:text-lg text-md font-bold flex items-center rounded-xl">
             <FaCoins className="mr-2 " />
-            Max Supply: <p className='font-light px-1.5'>{formatSupply(programDetails?.tokenInfo?.supply, programDetails?.tokenInfo?.decimals)}</p>
+            Max Supply: <p className='font-light px-1.5'>{formatSupply(supply, decimals)}</p>
           </div>
           <div className="p-4 text-xl lg:text-xl md:text-lg sm:text-md font-bold flex items-center">
             <FaUsers className="mr-2" />
@@ -79,33 +88,33 @@ export default function CombinedComponent({ coinName }) {
             <FaCoins className="mr-2" />
             Token address:
             <a
-              href={`https://solscan.io/account/${coinMetadata?.data?.address}`}
+              href={`https://solscan.io/account/${tokenAddress}`}
               target="_blank"
               rel="noopener noreferrer"
               className='font-light px-2 '>
-              {truncateString(coinMetadata?.data?.address ?? 'N/A', 15)}
+              {truncateString(tokenAddress, 15)}
             </a>
           </div>
           <div className="p-4 text-md lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
             <FaUsers className="mr-2 " />
             Owners Program:
             <a
-              href={`https://solscan.io/account/${programDetails?.ownerProgram}`}
+              href={`https://solscan.io/account/${ownerProgram}`}
               target="_blank"
               rel="noopener noreferrer"
               className='font-light px-2'>
-              {truncateString(programDetails?.ownerProgram ?? 'N/A', 15)}
+              {truncateString(ownerProgram, 15)}
             </a>
           </div>
           <div className="p-4 text-md lg:text-xl md:text-lg sm:text-md font-bold flex items-center rounded-xl w-50">
             <FaGavel className="mr-2 " />
             Authority:
             <a
-              href={`https://solscan.io/account/${programDetails?.tokenInfo?.tokenAuthority}`}
+              href={`https://solscan.io/account/${tokenAuthority}`}
               target="_blank"
               rel="noopener noreferrer"
               className='font-light px-2'>
-              {truncateString(programDetails?.tokenInfo?.tokenAuthority ?? 'N/A', 15)}
+              {truncateString(tokenAuthority, 15)}
             </a>
           </div>
         </div>

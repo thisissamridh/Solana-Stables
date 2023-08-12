@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { DataContext } from '../context/DataContext';
 import formatNumber from '../utils/FormatNumber';
 import { FaIdCard, FaCoins, FaUsers, FaVolumeUp, FaGavel } from 'react-icons/fa';
-
+import CoinMeta from '../utils/Coinmeta';
 export default function ProfileSummary() {
   const { individualCoinMcpData, stablecoinsID } = useContext(DataContext);
 
@@ -43,7 +43,7 @@ export default function ProfileSummary() {
           <FaVolumeUp className="mr-2 text-purple-500" />
           Decimal: <p className=' font-light px-2 '>{formatNumber(totalMarketCap)} </p>
         </div>
-       
+
       </div>
     </div>
   );

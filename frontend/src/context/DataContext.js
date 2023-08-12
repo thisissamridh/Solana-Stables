@@ -7,7 +7,7 @@ import { fetchTokenMeta } from '../api/tokenMetaApi';
 import { fetchTransferData } from '../api/tokenTransferApi';
 import { fetchTopHolders } from '../api/topHoldersApi';
 import { fetchStats } from '../api/helloMoonApi';
-import { fetchProgramDetails } from '../api/programDetailsApi';
+// import { fetchProgramDetails } from '../api/programDetailsApi';
 import { fetchAmmData } from '../api/ammApi';
 import CoinId from '../utils/coinId';
 
@@ -28,7 +28,7 @@ const DataProvider = ({ children }) => {
     const [transferData, setTransferData] = useState({});
     const [offset, setOffset] = useState(0);
     const [tokenMetaData, setTokenMetaData] = useState({});
-    const [programDetailsData, setProgramDetailsData] = useState({});
+    // const [programDetailsData, setProgramDetailsData] = useState({});
     const [ammDataObj, setAmmData] = useState({});
     // const defaultOffset = 0;
     const defaultSize = 20;
@@ -56,25 +56,25 @@ const DataProvider = ({ children }) => {
     };
 
 
-    const fetchAllProgramDetails = async () => {
-        try {
-            const programDetailsPromises = Object.entries(stablecoinAddressMapping).map(([coinName, addresses]) => {
-                const address = Array.isArray(addresses) ? addresses[0] : addresses;
-                return fetchProgramDetails(address);
-            });
+    // const fetchAllProgramDetails = async () => {
+    //     try {
+    //         const programDetailsPromises = Object.entries(stablecoinAddressMapping).map(([coinName, addresses]) => {
+    //             const address = Array.isArray(addresses) ? addresses[0] : addresses;
+    //             return fetchProgramDetails(address);
+    //         });
 
-            const programDetailsResults = await Promise.all(programDetailsPromises);
+    //         const programDetailsResults = await Promise.all(programDetailsPromises);
 
-            const programDetailsData = {};
-            Object.keys(stablecoinAddressMapping).forEach((coinName, index) => {
-                programDetailsData[coinName] = programDetailsResults[index];
-            });
+    //         const programDetailsData = {};
+    //         Object.keys(stablecoinAddressMapping).forEach((coinName, index) => {
+    //             programDetailsData[coinName] = programDetailsResults[index];
+    //         });
 
-            setProgramDetailsData(programDetailsData);
-        } catch (error) {
-            console.error('Error fetching program details data:', error);
-        }
-    };
+    //         setProgramDetailsData(programDetailsData);
+    //     } catch (error) {
+    //         console.error('Error fetching program details data:', error);
+    //     }
+    // };
 
 
     const fetchStatsData = async (coinName) => {
@@ -355,7 +355,7 @@ const DataProvider = ({ children }) => {
                 setWalletDistData(walletDistData);
 
                 setTotalMarketCap(sumMarketCap);
-                fetchAllProgramDetails();
+                // fetchAllProgramDetails();
                 fetchAllTokenMetaData();
                 fetchTransferDataForTokens(transferOffset, defaultSize);
                 fetchAmmDataForTokens();
@@ -378,7 +378,7 @@ const DataProvider = ({ children }) => {
 
     return (
 
-        <DataContext.Provider value={{ tokenMetaData, individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData, coinData, holderTopData, transferData, loadMore, loadMoreTransfers, statsData, programDetailsData, ammDataObj }}>
+        <DataContext.Provider value={{ tokenMetaData, individualCoinMcpData, stablecoinsID, totalMarketCap, holderData, walletDistData, coinData, holderTopData, transferData, loadMore, loadMoreTransfers, statsData, ammDataObj }}>
             {children}
         </DataContext.Provider>
     );

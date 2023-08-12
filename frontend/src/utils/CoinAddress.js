@@ -26,7 +26,7 @@ const stablecoinAddressMapping = {
     AGEUR: 'CbNYA9n3927uXUukee2Hf4tm3xxkffJPPZvGazc2EAH1',
     USDK: '43m2ewFV5nDepieFjT9EmAQnc1HRtAF247RBpLGFem5F',
     CEUR: '7g166TuBmnoHKvS2PEkZx6kREZtbfjUxCHGWjCqoDXZv',
-    CUSD: 'CUSDvqAQLbt7fRofcmV2EXfPA2t36kzj7FjzdmqDiNQL',
+    CUSD_98: 'CUSDvqAQLbt7fRofcmV2EXfPA2t36kzj7FjzdmqDiNQL',
     HUSD: [
         "7VQo3HFLNH5QqGtM8eC3XQbPkJUu7nS9LeGWjerRh5Sw", // wormhole v2
         "BybpSTBoZHsmKnfxYG47GDhVPKrnEKX31CScShbrzUhX", // wormhole v1
