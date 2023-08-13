@@ -18,6 +18,7 @@ const CoinId = [
   { id: 52, name: 'CEUR' },
   { id: 96, name: 'CUSD_98' },
   { id: 17, name: 'HUSD' },
+  { id: -1, name: 'ISC' }
 ];
 
 export default CoinId;

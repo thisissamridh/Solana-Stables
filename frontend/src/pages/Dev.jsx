@@ -158,14 +158,16 @@
 import React, { useContext, useEffect } from 'react';
 import { DataContext } from '../context/DataContext';  // Make sure to adjust the path based on your project structure
 // import TopHolderTable from '../components/Table/TopHolderTable'
+import HolderChart from '../components/Charts/Holderchart';
 import TokenTransferTable from '../components/Table/TransferTable'
 // import { fetchTokenStats } from '../api/helloMoonApi';
 const OtherComponent = () => {
-    const { tokenMetaData, holderTopData, coinData, transferData, statsData, programDetailsData, ammData } = useContext(DataContext);
+    const { holderTopData, holderData, ammData } = useContext(DataContext);
 
     useEffect(() => {
         console.log("holder wala data", holderTopData);
         console.log('ammData', ammData)
+        console.log('holderData', holderData)
 
     }, [holderTopData]);
 
@@ -174,8 +176,9 @@ const OtherComponent = () => {
             {/*  */}
 
             {/* <TopHolderTable coinName={"USDT"} /> */}
-            <TokenTransferTable coinName={"USDT"} />
-            <TokenTransferTable />
+            {/* <TokenTransferTable coinName={"USDT"} />
+            <TokenTransferTable /> */}
+            <HolderChart coinName={'ISC'} />
         </div>
     );
     // ... your component rendering

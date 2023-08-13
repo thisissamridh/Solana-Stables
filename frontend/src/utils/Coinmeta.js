@@ -11,6 +11,17 @@ const CoinMeta = {
         "address": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
         "icon": "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB/logo.svg"
     },
+    ISC: {
+        "name": "International Stable Currency",
+        "symbol": "ISC",
+        "OwnerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        "decimals": 6,
+        "tokenAuthority": "3XM6WqYLx5gKpRNwnCcUrBmJAhRHx3imktwEvbRwXavZ",
+        "supply": "229999442851",
+        "type": "token_address",
+        "address": "J9BcrQfX4p9D1bvLzRNCbMDv8f44a9LFdeqNE4Yk2WMD",
+        "icon": "https://raw.githubusercontent.com/theISCTeam/isc_meta/master/logo.png"
+    },
     USDC: {
         "name": "USD Coin",
         "symbol": "USDC",
