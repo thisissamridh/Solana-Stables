@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import StableCoinLineChart from '../components/Charts/MarketCapLineChart';
 import TopHolderTable from '../components/Table/TopHolderTable';
 import { DataProvider } from '../context/DataContext';
@@ -9,9 +9,11 @@ import TokenTransferTable from '../components/Table/TransferTable'
 import Walletfunds from '../components/Charts/Walletfunds';
 import LiquidMarket from '../components/LiquidMarket';
 import Footer from '../components/shared/Footer';
-
+import { DataContext } from '../context/DataContext';
 export default function Coins() {
+	const { individualCoinMcpData } = useContext(DataContext);
 	const [selectedStablecoin, setSelectedStablecoin] = useState('USDC');
+	const shouldRenderChart = individualCoinMcpData.length > 0 && individualCoinMcpData[individualCoinMcpData.length - 1][selectedStablecoin] !== undefined;
 
 	return (
 		<div className="flex flex-col gap-4">
@@ -24,9 +26,11 @@ export default function Coins() {
 					<MarketOverview coinName={selectedStablecoin} className="flex-1" />
 				</DataProvider>
 			</div>
-			<div className="flex flex-col lg:flex-row md:flex-row gap-4 w-full">
-				<StableCoinLineChart coinName={selectedStablecoin} />
-			</div>
+			{shouldRenderChart && (
+				<div className="flex flex-col lg:flex-row md:flex-row gap-4 w-full">
+					<StableCoinLineChart coinName={selectedStablecoin} />
+				</div>
+			)}
 
 			<div>
 				<TopHolderTable coinName={selectedStablecoin} />
