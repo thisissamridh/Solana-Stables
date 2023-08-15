@@ -15,9 +15,16 @@ const Name = ({ selectedStablecoin, onSelectStablecoin }) => {
 
     return (
         <header className="bg-discount-gradient feature-card:hover rounded-lg shadow-lg p-4 flex justify-between items-center scrollbar-hide">
-            <h1 className="text-white text-2xl font-bold text-gradient">
-                {selectedStablecoin} Stablecoin Analysis
-            </h1>
+            <div className="flex items-center">
+                <img
+                    src={`${process.env.PUBLIC_URL}/assets/logos/${selectedStablecoin}.png`}
+                    alt={selectedStablecoin}
+                    className="h-10 w-auto mr-4" // Added class to align with h1
+                />
+                <h1 className="text-white text-2xl font-bold text-gradient">
+                    {selectedStablecoin} Stablecoin Analysis
+                </h1>
+            </div>
             <div className="relative">
                 <button className="bg-black-gradient text-white p-4 rounded-md font-semibold" onClick={() => setShowDropdown(!showDropdown)}>
                     Select Stablecoin
