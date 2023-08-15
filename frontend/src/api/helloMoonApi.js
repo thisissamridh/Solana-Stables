@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const fetchStats = async (mint) => {
     const url = "https://rest-api.hellomoon.io/v0/token/stats";
+    const key = "Bearer " + process.env.REACT_APP_HELLO;
 
     try {
         const { data } = await axios.post(
@@ -14,7 +15,7 @@ const fetchStats = async (mint) => {
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
-                    Authorization: `Bearer 54c679f3-a269-412b-a1de-89df102c9c28`, // Please replace <your_token> with your actual token
+                    Authorization: key, // Please replace <your_token> with your actual token
                 },
             }
         );
